@@ -1,0 +1,40 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <h3>Listado Registro Médico</h3>
+    </div>
+</div>
+<div ng-controller="listadoRegistroMCtrl as vm" ng-cloak>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-condensed table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th colspan="2">Acciones</th>
+                        <th>Nro. de Registro</th>
+                        <th>Ciudadano</th>
+                        <th>Doctor</th>
+                        <th>Hospital</th>
+                        <th>Proceso</th>
+                        <th>Acción</th>
+                        <th>Comentario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="o in vm.RegistroMedicos">
+                        <td><button title="Actualizar" class="btn btn-warning btn-sm" ng-click="vm.actualizar(o)"> <i class="glyphicon glyphicon-edit" /></button></td>
+                        <td><button title="Eliminar" class="btn btn-danger btn-sm" ng-click="vm.eliminar(o)"><i class=" glyphicon glyphicon-remove" /></button></td>
+                        <td>{{o.RegistroMedicoID}}</td>
+                        <td>{{o.Ciudadano.Nombre}}</td>
+                        <td>{{o.Doctore.Nombre + " " + o.Doctore.Apellido }}</td>
+                        <td>{{o.Hospitale.Nombre}}</td>
+                        <td>{{o.Accione.Proceso.Nombre}}</td>
+                        <td>{{o.Accione.Nombre}}</td>
+                        <td>{{o.Comentario}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <pre>{{vm.RegistroMedicos | json}}</pre>
+
+
