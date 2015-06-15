@@ -1,5 +1,6 @@
 ﻿using SNRegistros.Aplicacion.Dto;
 using SNRegistros.Dominio.DB;
+using SNRegistros.Dominio.Managers.Utilidadades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,26 @@ namespace SNRegistros.Dominio.Managers
             }
         }
 
-       
+        public MensajeDto CargarCiudadano(CiudadanoDto cDto)
+        {
+            using (var context = new SNRegistroModel())
+            {
+                MensajeDto mensajeDto = null;
+                var CiudadanoDB = new Ciudadano();
+                CiudadanoDB.Nombre = cDto.Nombre;
+
+                context.Ciudadanos.Add(CiudadanoDB);
+                mensajeDto = AgregarModificar.Hacer(context, mensajeDto);
+                if (mensajeDto != null) { return mensajeDto; }
+                cDto.CiudadanoID = CiudadanoDB.CiudadanoID;
+
+                return new MensajeDto()
+                {
+                    Error = false,
+                    MensajeDelProceso = "Se cargo el Doctor : " + cDto.CiudadanoID,
+                    ObjetoDto = cDto
+                };
+            }
+        }
     }
 }

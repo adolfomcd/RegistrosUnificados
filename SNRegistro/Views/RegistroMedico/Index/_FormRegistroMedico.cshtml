@@ -6,7 +6,7 @@
             <div class="input-group">
                 <input type="text" name="Ciudadano" ng-required="true" ng-model="vm.GestorMedico.Ciudadano" typeahead="Ciudadano as Ciudadano.Nombre + ' ' + Ciudadano.Apellido for Ciudadano in vm.Ciudadanos | filter:$viewValue | limitTo:8" class="form-control">
                 <span class="input-group-btn">
-                    <button class="btn btn-default" ng-click="vm.crearDoctor()" type="button">Crear</button>
+                    <button class="btn btn-default" ng-click="vm.crearCiudadano()" type="button">Crear</button>
                 </span>
             </div>
         </div>

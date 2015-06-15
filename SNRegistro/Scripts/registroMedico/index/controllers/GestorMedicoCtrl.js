@@ -55,5 +55,17 @@
 
             });
         }
+        vm.crearCiudadano = function () {
+            var modalInstance = $modal.open({
+                templateUrl: 'ModalCrearCiudadano.html',
+                controller: 'ModalCrearCiudadanoCtrl',
+                size: 'lg'
+            });
+            modalInstance.result.then(function (selectedItem) {
+            }, function () {
+                vm.Ciudadanos = GestorMedicoResourse.Ciudadanos.query();
+                //$log.info('Modal dismissed at: ' + new Date());
+            });
+        }
     }
 })();

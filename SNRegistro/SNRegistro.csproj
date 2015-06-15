@@ -177,6 +177,7 @@
     <Compile Include="Controllers\Api\HospitalesController.cs" />
     <Compile Include="Controllers\Api\ProcesosController.cs" />
     <Compile Include="Controllers\Api\RegistrosMedicosController.cs" />
+    <Compile Include="Controllers\CiudadanoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegistroMedicoController.cs" />
@@ -1043,14 +1044,15 @@
     <Content Include="Views\RegistroMedico\Index.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\RegistroMedico\Index\_FormRegistroMedico.cshtml" />
-    <Content Include="Views\AgregarCiudadanos\Create.cshtml" />
-    <Content Include="Views\AgregarCiudadanos\Delete.cshtml" />
-    <Content Include="Views\AgregarCiudadanos\Details.cshtml" />
-    <Content Include="Views\AgregarCiudadanos\Edit.cshtml" />
-    <Content Include="Views\AgregarCiudadanos\Index.cshtml" />
     <Content Include="Views\RegistroMedico\Index\_ListadoRegistroM.cshtml" />
     <Content Include="Views\RegistroMedico\Index\_FormModalCrearCiudadano.cshtml" />
     <Content Include="Views\RegistroPolicial\Index.cshtml" />
+    <Content Include="Views\Ciudadanoes\Create.cshtml" />
+    <Content Include="Views\Ciudadanoes\Delete.cshtml" />
+    <Content Include="Views\Ciudadanoes\Details.cshtml" />
+    <Content Include="Views\Ciudadanoes\Edit.cshtml" />
+    <Content Include="Views\Ciudadanoes\Index.cshtml" />
+    <Content Include="Views\Home\PaginaAdministrativa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

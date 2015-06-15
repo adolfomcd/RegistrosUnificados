@@ -12,7 +12,10 @@ namespace SNRegistro.Controllers
         {
             return View();
         }
-
+        public ActionResult PaginaAdministrativa()
+        {
+            return View();
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

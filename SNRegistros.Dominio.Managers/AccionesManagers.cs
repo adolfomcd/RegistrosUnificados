@@ -1,5 +1,6 @@
 ﻿using SNRegistros.Aplicacion.Dto;
 using SNRegistros.Dominio.DB;
+using SNRegistros.Dominio.Managers.Utilidadades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,5 +44,6 @@ namespace SNRegistros.Dominio.Managers
                 return listado;
             }
         }
+        
     }
 }

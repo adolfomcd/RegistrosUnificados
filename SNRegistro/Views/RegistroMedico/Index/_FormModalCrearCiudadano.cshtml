@@ -1,16 +1,16 @@
 ﻿<div class="row">
-    <form class="form-horizontal" role="form" name="doctoresForm">
+    <form class="form-horizontal" role="form" name="CiudadanosForm">
         <div class="form-group">
-            <label for="ciudadano" class="col-md-5 control-label">Nombre Doctor</label>
+            <label for="Ciudadano" class="col-md-5 control-label">Nombre Doctor</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" ng-model="ciudadano.nombre" name="nombre" ng-required="true">
+                <input type="text" class="form-control" ng-model="Ciudadano.Nombre" name="Nombre" ng-required="true">
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-7 col-md-offset-5">
-                <button ng-click="guardar()" ng-disabled="doctoresForm.$invalid" class="btn btn-default">
-                    <span ng-show="ciudadano.ciudadanoiID == null">Cargar</span>
-                    <span ng-show="ciudadano.ciudadanoiID != null">Editar</span>
+                <button ng-click="guardar()" ng-disabled="CiudadanosForm.$invalid" class="btn btn-default">
+                    <span ng-show="Ciudadano.CiudadanoiID == null">Cargar</span>
+                    <span ng-show="Ciudadano.CiudadanoiID != null">Editar</span>
                 </button>
                 <button ng-click="nuevoParaCargar()" class="btn btn-default">
                     Nuevo
@@ -24,7 +24,7 @@
                     {{mensajeDelServidor}}
                 </div>
             </div>
-            <pre>{{vm.registrosMedicos | json}}</pre>
+            <pre>{{Ciudadano | json}}</pre>
         </div>
     </form>
 </div>

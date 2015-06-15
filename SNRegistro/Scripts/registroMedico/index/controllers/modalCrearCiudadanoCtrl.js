@@ -3,26 +3,26 @@
 
     angular
         .module('GestorMedicoApp')
-        .controller('modalCrearCiudadanoCtrl', modalCrearCiudadanoCtrl);
+        .controller('ModalCrearCiudadanoCtrl', ModalCrearCiudadanoCtrl);
 
-    modalCrearCiudadanoCtrl.$inject = ['$scope', '$modalInstance', 'GestorMedicoResource'];
+    ModalCrearCiudadanoCtrl.$inject = ['$scope', '$modalInstance', 'GestorMedicoResource'];
 
-    function modalCrearCiudadanoCtrl($scope, $modalInstance, GestorMedicoResource) {
+    function ModalCrearCiudadanoCtrl($scope, $modalInstance, GestorMedicoResource) {
         /* jshint validthis:true */
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
         };
 
         $scope.nuevoParaCargar = function () {
-            $scope.doctore = {};
+            $scope.Ciudadanos = {};
         };
 
         $scope.guardar = function () {
-            GestorMedicoResource.doctores.save($scope.doctore)
+            GestorMedicoResource.Ciudadanos.save($scope.Ciudadano)
            .$promise.then(
                function (mensaje) {
                    if (!mensaje.error) {
-                       $scope.doctore = mensaje.objetoDto;
+                       $scope.Ciudadanos = mensaje.ObjetoDto;
                        $scope.mensajeDelServidor = mensaje.mensajeDelProceso;
                        //$rootScope.$broadcast('actualizarListadoProveedores', {});
                    } else {

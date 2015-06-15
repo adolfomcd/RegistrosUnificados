@@ -26,8 +26,11 @@ namespace SNRegistro.Controllers.Api
         }
 
         // POST: api/Ciudadanos
-        public void Post([FromBody]string value)
+        public HttpResponseMessage Post(CiudadanoDto cDto)
         {
+            CiudadanosManagers dm = new CiudadanosManagers();
+            MensajeDto mensaje = dm.CargarCiudadano(cDto);
+            return Request.CreateResponse(HttpStatusCode.Created, mensaje);
         }
 
         // PUT: api/Ciudadanos/5
