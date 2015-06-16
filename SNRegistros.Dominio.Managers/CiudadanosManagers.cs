@@ -34,6 +34,7 @@ namespace SNRegistros.Dominio.Managers
                 MensajeDto mensajeDto = null;
                 var CiudadanoDB = new Ciudadano();
                 CiudadanoDB.Nombre = cDto.Nombre;
+                CiudadanoDB.Apellido = cDto.Apellido;
 
                 context.Ciudadanos.Add(CiudadanoDB);
                 mensajeDto = AgregarModificar.Hacer(context, mensajeDto);

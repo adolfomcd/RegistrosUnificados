@@ -999,7 +999,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\registroMedico\index\controllers\GestorMedicoCtrl.js" />
     <Content Include="Scripts\registroMedico\index\controllers\listadoRegistroMCtrl.js" />
-    <Content Include="Scripts\registroMedico\index\controllers\modalCrearCiudadanoCtrl.js" />
+    <Content Include="Scripts\registroMedico\index\controllers\modal\modalCrearCiudadanoCtrl.js" />
     <Content Include="Scripts\registroMedico\index\services\common.services.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -1045,7 +1045,7 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\RegistroMedico\Index\_FormRegistroMedico.cshtml" />
     <Content Include="Views\RegistroMedico\Index\_ListadoRegistroM.cshtml" />
-    <Content Include="Views\RegistroMedico\Index\_FormModalCrearCiudadano.cshtml" />
+    <Content Include="Views\RegistroMedico\Index\modal\_FormModalCrearCiudadano.cshtml" />
     <Content Include="Views\RegistroPolicial\Index.cshtml" />
     <Content Include="Views\Ciudadanoes\Create.cshtml" />
     <Content Include="Views\Ciudadanoes\Delete.cshtml" />
@@ -1053,6 +1053,9 @@
     <Content Include="Views\Ciudadanoes\Edit.cshtml" />
     <Content Include="Views\Ciudadanoes\Index.cshtml" />
     <Content Include="Views\Home\PaginaAdministrativa.cshtml" />
+    <Content Include="Views\Home\PaginaMedica.cshtml" />
+    <Content Include="Views\Home\PaginaJudicial.cshtml" />
+    <Content Include="Views\Home\PaginaPolicial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

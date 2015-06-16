@@ -1,16 +1,22 @@
 ﻿<div class="row">
     <form class="form-horizontal" role="form" name="CiudadanosForm">
         <div class="form-group">
-            <label for="Ciudadano" class="col-md-5 control-label">Nombre Doctor</label>
+            <label for="Ciudadano" class="col-md-5 control-label">Nombre</label>
             <div class="col-md-7">
                 <input type="text" class="form-control" ng-model="Ciudadano.Nombre" name="Nombre" ng-required="true">
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-7 col-md-offset-5">
+            <label for="Apellido" class="col-md-5 control-label">Apellido</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="Ciudadano.Apellido" name="Nombre" ng-required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
                 <button ng-click="guardar()" ng-disabled="CiudadanosForm.$invalid" class="btn btn-default">
-                    <span ng-show="Ciudadano.CiudadanoiID == null">Cargar</span>
-                    <span ng-show="Ciudadano.CiudadanoiID != null">Editar</span>
+                    <span ng-show="Ciudadano.CiudadanoID == null">Cargar</span>
+                    <span ng-show="Ciudadano.CiudadanoID != null">Editar</span>
                 </button>
                 <button ng-click="nuevoParaCargar()" class="btn btn-default">
                     Nuevo
@@ -21,7 +27,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Aviso</div>
                 <div class="panel-body">
-                    {{mensajeDelServidor}}
+                    {{MensajeDelProceso}}
                 </div>
             </div>
             <pre>{{Ciudadano | json}}</pre>

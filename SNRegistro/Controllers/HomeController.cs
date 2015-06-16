@@ -16,6 +16,18 @@ namespace SNRegistro.Controllers
         {
             return View();
         }
+        public ActionResult PaginaMedica()
+        {
+            return View();
+        }
+        public ActionResult PaginaJudicial()
+        {
+            return View();
+        }
+        public ActionResult PaginaPolicial()
+        {
+            return View();
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

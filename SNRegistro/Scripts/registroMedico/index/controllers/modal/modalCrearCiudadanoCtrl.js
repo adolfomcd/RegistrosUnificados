@@ -5,32 +5,32 @@
         .module('GestorMedicoApp')
         .controller('ModalCrearCiudadanoCtrl', ModalCrearCiudadanoCtrl);
 
-    ModalCrearCiudadanoCtrl.$inject = ['$scope', '$modalInstance', 'GestorMedicoResource'];
+    ModalCrearCiudadanoCtrl.$inject = ['$scope', '$modalInstance', 'GestorMedicoResourse'];
 
-    function ModalCrearCiudadanoCtrl($scope, $modalInstance, GestorMedicoResource) {
+    function ModalCrearCiudadanoCtrl($scope, $modalInstance, GestorMedicoResourse) {
         /* jshint validthis:true */
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
         };
 
         $scope.nuevoParaCargar = function () {
-            $scope.Ciudadanos = {};
+            $scope.Ciudadano = {};
         };
 
         $scope.guardar = function () {
-            GestorMedicoResource.Ciudadanos.save($scope.Ciudadano)
+            GestorMedicoResourse.Ciudadanos.save($scope.Ciudadano)
            .$promise.then(
                function (mensaje) {
                    if (!mensaje.error) {
-                       $scope.Ciudadanos = mensaje.ObjetoDto;
-                       $scope.mensajeDelServidor = mensaje.mensajeDelProceso;
+                       $scope.Ciudadano = mensaje.ObjetoDto;
+                       $scope.MensajeDelProceso = mensaje.MensajeDelProceso;
                        //$rootScope.$broadcast('actualizarListadoProveedores', {});
                    } else {
-                       $scope.mensajeDelServidor = mensaje.mensajeDelProceso;
+                       $scope.MensajeDelProceso = mensaje.MensajeDelProceso;
                    }
                },
              function (mensaje) {
-                 $scope.mensajeDelServidor = mensaje.data.mensajeDelProceso;
+                 $scope.MensajeDelProceso = mensaje.data.MensajeDelProceso;
              }
            );
         }
