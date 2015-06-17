@@ -65,7 +65,7 @@
       <Name>SNRegistros.Aplicacion.Dto</Name>
     </ProjectReference>
     <ProjectReference Include="..\SNRegistros.Dominio.DB\SNRegistros.Dominio.DB.csproj">
-      <Project>{493ffe74-eb5c-480c-94dd-ddded03e4fde}</Project>
+      <Project>{ee88a472-59b7-463a-9238-d59b654590d5}</Project>
       <Name>SNRegistros.Dominio.DB</Name>
     </ProjectReference>
   </ItemGroup>

@@ -30,7 +30,6 @@ namespace SNRegistros.Dominio.DB
         public virtual DbSet<RegistroPolicial> RegistroPolicials { get; set; }
         public virtual DbSet<RegistrosJudiciale> RegistrosJudiciales { get; set; }
         public virtual DbSet<RegistrosMedico> RegistrosMedicos { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

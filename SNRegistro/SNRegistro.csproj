@@ -180,6 +180,7 @@
     <Compile Include="Controllers\CiudadanoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RegistroJudicialController.cs" />
     <Compile Include="Controllers\RegistroMedicoController.cs" />
     <Compile Include="Controllers\RegistroPolicialController.cs" />
     <Compile Include="Global.asax.cs">
@@ -997,10 +998,19 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\registroJudicial\index\controllers\GestorJudicialCtrl.js" />
+    <Content Include="Scripts\registroJudicial\index\controllers\listadoRegistroJCtrl.js" />
+    <Content Include="Scripts\registroJudicial\index\controllers\modal\modalCrearCiudadanoCtrl.js" />
+    <Content Include="Scripts\registroJudicial\index\services\common.services.js" />
     <Content Include="Scripts\registroMedico\index\controllers\GestorMedicoCtrl.js" />
     <Content Include="Scripts\registroMedico\index\controllers\listadoRegistroMCtrl.js" />
     <Content Include="Scripts\registroMedico\index\controllers\modal\modalCrearCiudadanoCtrl.js" />
     <Content Include="Scripts\registroMedico\index\services\common.services.js" />
+    <Content Include="Scripts\registroPolicial\index\controllers\GestorPolicialCtrl.js" />
+    <Content Include="Scripts\registroPolicial\index\controllers\listadoRegistroJCtrl.js" />
+    <Content Include="Scripts\registroPolicial\index\controllers\modal\modalCrearCiudadanoCtrl.js" />
+    <Content Include="Scripts\registroPolicial\index\services\common.services.js" />
+    <Content Include="Scripts\registroPolicial\services\common.services.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -1056,6 +1066,13 @@
     <Content Include="Views\Home\PaginaMedica.cshtml" />
     <Content Include="Views\Home\PaginaJudicial.cshtml" />
     <Content Include="Views\Home\PaginaPolicial.cshtml" />
+    <Content Include="Views\RegistroJudicial\Index.cshtml" />
+    <Content Include="Views\RegistroJudicial\Index\modal\_FormModalCrearCiudadano.cshtml" />
+    <Content Include="Views\RegistroPolicial\Index\modal\_FormModalCrearCiudadano.cshtml" />
+    <Content Include="Views\RegistroJudicial\Index\_ListadoRegistroM.cshtml" />
+    <Content Include="Views\RegistroJudicial\Index\_FormRegistroMedico.cshtml" />
+    <Content Include="Views\RegistroPolicial\Index\_ListadoRegistroM.cshtml" />
+    <Content Include="Views\RegistroPolicial\Index\_FormRegistroMedico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1072,7 +1089,7 @@
       <Name>SNRegistros.Aplicacion.Dto</Name>
     </ProjectReference>
     <ProjectReference Include="..\SNRegistros.Dominio.DB\SNRegistros.Dominio.DB.csproj">
-      <Project>{493ffe74-eb5c-480c-94dd-ddded03e4fde}</Project>
+      <Project>{ee88a472-59b7-463a-9238-d59b654590d5}</Project>
       <Name>SNRegistros.Dominio.DB</Name>
     </ProjectReference>
     <ProjectReference Include="..\SNRegistros.Dominio.Managers\SNRegistros.Dominio.Managers.csproj">
