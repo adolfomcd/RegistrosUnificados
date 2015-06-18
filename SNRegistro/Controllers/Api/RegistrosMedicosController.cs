@@ -7,40 +7,40 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace SNRegistro.Controllers.Api
-{
-    public class RegistroMedicosController : ApiController
-    {
+namespace SNRegistro.Controllers.Api {
+    public class RegistroMedicosController : ApiController {
         // GET: api/RegistroMedicos
-        public HttpResponseMessage Get()
-        {
+        public HttpResponseMessage Get() {
             RegistrosMedicosManagers rm = new RegistrosMedicosManagers();
             List<RegistroMedicoDto> listado = rm.ListadoRegistroMedico();
             return Request.CreateResponse<List<RegistroMedicoDto>>(HttpStatusCode.OK, listado);
         }
 
         // GET: api/RegistroMedicos/5
-        public string Get(int id)
-        {
+        public string Get(int id) {
             return "value";
         }
 
         // POST: api/RegistroMedicos
-        public HttpResponseMessage Post(RegistroMedicoDto rDto)
-        {
+        public HttpResponseMessage Post(RegistroMedicoDto rDto) {
             RegistrosMedicosManagers rm = new RegistrosMedicosManagers();
             MensajeDto mensaje = rm.CargarRegistroMedico(rDto);
             return Request.CreateResponse(HttpStatusCode.Created, mensaje);
         }
+        [HttpPost]
+        [Route("api/RegistroMedicos/FiltroPorRegistroMedicoDto")]
+        public HttpResponseMessage PostFiltroPorRegistroMedicoDto(RegistroMedicoDto rDto) {
+            RegistrosMedicosManagers rm = new RegistrosMedicosManagers();
+            MensajeDto mensaje = rm.ListadoRegistroMedico(rDto);
+            return Request.CreateResponse(HttpStatusCode.Created, mensaje);
+        }
 
         // PUT: api/RegistroMedicos/5
-        public void Put(int id, [FromBody]string value)
-        {
+        public void Put(int id, [FromBody]string value) {
         }
 
         // DELETE: api/RegistroMedicos/5
-        public void Delete(int id)
-        {
+        public void Delete(int id) {
         }
     }
 }
