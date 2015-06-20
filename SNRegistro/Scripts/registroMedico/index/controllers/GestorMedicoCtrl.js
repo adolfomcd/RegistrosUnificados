@@ -73,8 +73,9 @@
         //Captura de broadcast
         $rootScope.$on("actualizarRegistroMedico", function (event, objetoRecibido) {
             vm.GestorMedico = objetoRecibido;
-            //refrescarCampoSelect("GestorMedico", vm.Procesos, "Proceso", "ProcesoID");
-            refrescarCampoSelect("GestorMedico", vm.Acciones, "Accione", "AccionID");
+            vm.GestorMedico.Proceso = vm.GestorMedico.Accione.Proceso;
+            refrescarCampoSelect("GestorMedico", vm.Procesos, "Proceso", "ProcesoID");
+            //refrescarCampoSelect("GestorMedico", vm.Acciones, "Accione", "AccionID");
         });
     }
 })();
