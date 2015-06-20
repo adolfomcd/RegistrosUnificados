@@ -14,7 +14,7 @@ namespace SNRegistros.Dominio.Managers
     {
         public List<CiudadanoDto> Listado()
         {
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 var listado = context.Ciudadanos
                     .Select(s => new CiudadanoDto()
@@ -29,7 +29,7 @@ namespace SNRegistros.Dominio.Managers
 
         public MensajeDto CargarCiudadano(CiudadanoDto cDto)
         {
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 MensajeDto mensajeDto = null;
                 var CiudadanoDB = new Ciudadano();

@@ -13,7 +13,7 @@ namespace SNRegistros.Dominio.Managers
     {
         public List<RegistrosPolicialeDto> ListadoRegistroPolicial()
         {
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 var listado = context.RegistrosPoliciales
                     .Select(s => new RegistrosPolicialeDto()
@@ -57,7 +57,7 @@ namespace SNRegistros.Dominio.Managers
             {
                 return EditarMovimiento(mDto);
             }
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 MensajeDto mensajeDto = null;
                 var RegistroPolicialDb = new RegistrosPoliciale();
@@ -83,7 +83,7 @@ namespace SNRegistros.Dominio.Managers
 
         private MensajeDto EditarMovimiento(RegistrosPolicialeDto mDto)
         {
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 MensajeDto mensajeDto = null;
                 var movimientoDb = context.RegistrosPoliciales
@@ -111,7 +111,7 @@ namespace SNRegistros.Dominio.Managers
 
         public MensajeDto EliminarMovimiento(int id)
         {
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 MensajeDto mensajeDto = null;
                 var movimientoDb = context.RegistrosPoliciales

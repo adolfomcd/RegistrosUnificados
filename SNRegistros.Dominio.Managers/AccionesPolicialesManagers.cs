@@ -12,7 +12,7 @@ namespace SNRegistros.Dominio.Managers
     {
         public List<AccionesPolicialeDto> ListadoAccionesPoliciales()
         {
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 var listado = context.AccionesPoliciales
                     .Select(s => new AccionesPolicialeDto()
@@ -26,7 +26,7 @@ namespace SNRegistros.Dominio.Managers
         }
         public List<AccionesPolicialeDto> ListadoAccionesPoliciales(int ProcesoPolicialID)
         {
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 var listado = context.AccionesPoliciales
                     .Where(t => t.ProcesoPolicialID == ProcesoPolicialID)

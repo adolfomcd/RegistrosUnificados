@@ -12,7 +12,7 @@ namespace SNRegistros.Dominio.Managers
     {
         public List<PoliciaDto> Listado()
         {
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 var listado = context.Policias
                     .Select(s => new PoliciaDto()

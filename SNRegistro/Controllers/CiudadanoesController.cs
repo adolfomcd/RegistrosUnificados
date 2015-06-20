@@ -12,7 +12,7 @@ namespace SNRegistro.Controllers
 {
     public class CiudadanoesController : Controller
     {
-        private SNRegistroModel db = new SNRegistroModel();
+        private SNRegistroEntities db = new SNRegistroEntities();
 
         // GET: Ciudadanoes
         public ActionResult Index()

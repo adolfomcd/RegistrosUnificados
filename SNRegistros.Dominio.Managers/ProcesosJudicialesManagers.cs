@@ -12,7 +12,7 @@ namespace SNRegistros.Dominio.Managers
     {
         public List<ProcesosJudicialeDto> Listado()
         {
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 var listado = context.ProcesosJudiciales
                     .Select(s => new ProcesosJudicialeDto()

@@ -13,7 +13,7 @@ namespace SNRegistros.Dominio.Managers
     {
        public List<RegistrosJudicialeDto> ListadoRegistroMedico()
         {
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 var listado = context.RegistrosJudiciales
                     .Select(s => new RegistrosJudicialeDto()
@@ -57,7 +57,7 @@ namespace SNRegistros.Dominio.Managers
             {
                 return EditarMovimiento(mDto);
             }
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 MensajeDto mensajeDto = null;
                 var RegistroJudicialDb = new RegistrosJudiciale();
@@ -83,7 +83,7 @@ namespace SNRegistros.Dominio.Managers
 
         private MensajeDto EditarMovimiento(RegistrosJudicialeDto mDto)
         {
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 MensajeDto mensajeDto = null;
                 var judicialDb = context.RegistrosJudiciales
@@ -111,7 +111,7 @@ namespace SNRegistros.Dominio.Managers
 
         public MensajeDto EliminarMovimiento(int id)
         {
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 MensajeDto mensajeDto = null;
                 var movimientoDb = context.RegistrosJudiciales

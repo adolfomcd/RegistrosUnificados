@@ -12,18 +12,12 @@ namespace SNRegistros.Dominio.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class Policia
+    public partial class AspNetUserLogin
     {
-        public Policia()
-        {
-            this.RegistrosPoliciales = new HashSet<RegistrosPoliciale>();
-        }
+        public string LoginProvider { get; set; }
+        public string ProviderKey { get; set; }
+        public string UserId { get; set; }
     
-        public int PoliciaID { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public int ComisariaID { get; set; }
-    
-        public virtual ICollection<RegistrosPoliciale> RegistrosPoliciales { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

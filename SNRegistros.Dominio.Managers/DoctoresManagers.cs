@@ -11,7 +11,7 @@ namespace SNRegistros.Dominio.Managers
     public class DoctoresManagers
     {
         public List<DoctoreDto> Listado() {
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 var listado = context.Doctores
                     .Select(s => new DoctoreDto()
