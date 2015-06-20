@@ -22,11 +22,11 @@ namespace SNRegistros.Dominio.DB
         [Required]
         public string Comentario { get; set; }
 
-        public virtual AccionJudicial AccionJudicial { get; set; }
+        public virtual AccionesJudiciale AccionesJudiciale { get; set; }
 
         public virtual Ciudadano Ciudadano { get; set; }
 
-        public virtual FuncionarioJudicial FuncionarioJudicial { get; set; }
+        public virtual FuncionariosJudiciale FuncionariosJudiciale { get; set; }
 
         public virtual Juzgado Juzgado { get; set; }
     }

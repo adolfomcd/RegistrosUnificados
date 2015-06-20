@@ -10,7 +10,7 @@ namespace SNRegistros.Dominio.DB
     {
         public ProcesosJudiciale()
         {
-            AccionJudicials = new HashSet<AccionJudicial>();
+            AccionesJudiciales = new HashSet<AccionesJudiciale>();
         }
 
         [Key]
@@ -20,6 +20,6 @@ namespace SNRegistros.Dominio.DB
         [StringLength(50)]
         public string NombreProcJud { get; set; }
 
-        public virtual ICollection<AccionJudicial> AccionJudicials { get; set; }
+        public virtual ICollection<AccionesJudiciale> AccionesJudiciales { get; set; }
     }
 }

@@ -10,6 +10,7 @@ namespace SNRegistros.Dominio.DB
     {
         public Ciudadade()
         {
+            Comisarias = new HashSet<Comisaria>();
             Hospitales = new HashSet<Hospitale>();
         }
 
@@ -21,6 +22,8 @@ namespace SNRegistros.Dominio.DB
         public string Nombre { get; set; }
 
         public int DepartamentoID { get; set; }
+
+        public virtual ICollection<Comisaria> Comisarias { get; set; }
 
         public virtual ICollection<Hospitale> Hospitales { get; set; }
     }

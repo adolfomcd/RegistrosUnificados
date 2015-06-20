@@ -6,9 +6,9 @@ namespace SNRegistros.Dominio.DB
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("RegistroPolicial")]
-    public partial class RegistroPolicial
+    public partial class RegistrosPoliciale
     {
+        [Key]
         public int RegistroPolicialID { get; set; }
 
         public int CiudadanoID { get; set; }

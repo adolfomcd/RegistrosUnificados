@@ -10,7 +10,7 @@ namespace SNRegistros.Dominio.DB
     {
         public Comisaria()
         {
-            RegistroPolicials = new HashSet<RegistroPolicial>();
+            RegistrosPoliciales = new HashSet<RegistrosPoliciale>();
         }
 
         public int ComisariaID { get; set; }
@@ -19,8 +19,10 @@ namespace SNRegistros.Dominio.DB
         [StringLength(50)]
         public string Nombre { get; set; }
 
-        public int? CiudadID { get; set; }
+        public int CiudadID { get; set; }
 
-        public virtual ICollection<RegistroPolicial> RegistroPolicials { get; set; }
+        public virtual Ciudadade Ciudadade { get; set; }
+
+        public virtual ICollection<RegistrosPoliciale> RegistrosPoliciales { get; set; }
     }
 }

@@ -2,27 +2,27 @@
     'use strict';
 
     angular
-        .module('GestorMedicoApp')
-        .controller('GestorMedicoCtrl', GestorMedicoCtrl);
+        .module('GestorPololicialApp')
+        .controller('GestorPololicialCtrl', GestorPololicialCtrl);
 
-    GestorMedicoCtrl.$inject = ['$scope', '$rootScope', '$modal', 'GestorMedicoResourse'];
+    GestorPololicialCtrl.$inject = ['$scope', '$rootScope', '$modal', 'GestorPolicialResourse'];
 
-    function GestorMedicoCtrl($scope, $rootScope, $modal, GestorMedicoResourse) {
+    function GestorPololicialCtrl($scope, $rootScope, $modal, GestorPolicialResourse) {
         /* jshint validthis:true */
         var vm = this;
-        vm.Ciudadanos = GestorMedicoResourse.Ciudadanos.query();
-        vm.Doctores = GestorMedicoResourse.Doctores.query();
-        vm.Hospitales = GestorMedicoResourse.Hospitales.query();
-        vm.Procesos = GestorMedicoResourse.Procesos.query();
+        vm.Ciudadanos = GestorPolicialResourse.Ciudadanos.query();
+        vm.Policias = GestorPolicialResourse.Policias.query();
+        vm.Comisarias = GestorPolicialResourse.Comisarias.query();
+        vm.ProcesosPoliciales = GestorPolicialResourse.ProcesosPoliciales.query();
        
-        $scope.$watch('vm.GestorMedico.Proceso', function (newValue, oldValue) {
+        $scope.$watch('vm.GestorPolicial.ProcesosPoliciales', function (newValue, oldValue) {
             if (newValue !== oldValue) {
-                if (vm.GestorMedico.Proceso == null) { return; }
-                GestorMedicoResourse.AccionesSegunProcesoID.query(
-                    { ProcesoID: vm.GestorMedico.Proceso.ProcesoID },
+                if (vm.GestorPolicial.ProcesosPoliciales == null) { return; }
+                GestorPolicialResourse.AccionesPolicialesSegunProcesoPolicialID.query(
+                    { ProcesoPolicialID: vm.GestorPolicial.ProcesosPoliciales.ProcesoPolicialID },
                     function (respuesta) {
-                        vm.Acciones = respuesta;
-                        refrescarCampoSelect("GestorMedico", vm.Acciones, "Accione", "AccionID");
+                        vm.AccionesPoliciales = respuesta;
+                        refrescarCampoSelect("GestorPolicial", vm.AccionesPoliciales, "AccionesPoliciales", "AccPolID");
                     });
             }
         });
@@ -41,14 +41,14 @@
         }
         //Eventos de usuario
         vm.guardar = function () {
-            GestorMedicoResourse.RegistroMedicos.save(vm.GestorMedico)
+            GestorPolicialResourse.GestorPolicial.save(vm.GestorPolicial)
             .$promise.then(function (respuesta) {
                 //Exitoso
-                vm.GestorMedico = respuesta.ObjetoDto;
+                vm.GestorPolicial = respuesta.ObjetoDto;
                 vm.MensajeDelProceso = respuesta.MensajeDelProceso;
-                refrescarCampoSelect("GestorMedico", vm.Procesos, "Proceso", "ProcesoID");
-                refrescarCampoSelect("GestorMedico", vm.Acciones, "Accione", "AccionID");
-                $rootScope.$broadcast('actualizarListadoMedico', {});
+                refrescarCampoSelect("GestorPolicial", vm.ProcesosPoliciales, "ProcesosPoliciales", "ProcesoPolicialID");
+                refrescarCampoSelect("GestorPolicial", vm.Acciones, "AccionesPoliciales", "AccPolID");
+                $rootScope.$broadcast('actualizarListadoPolicial', {});
             },
             function () {
                 //Error
@@ -63,7 +63,7 @@
             });
             modalInstance.result.then(function (selectedItem) {
             }, function () {
-                vm.Ciudadanos = GestorMedicoResourse.Ciudadanos.query();
+                vm.Ciudadanos = GestorPolicialResourse.Ciudadanos.query();
                 //$log.info('Modal dismissed at: ' + new Date());
             });
         }

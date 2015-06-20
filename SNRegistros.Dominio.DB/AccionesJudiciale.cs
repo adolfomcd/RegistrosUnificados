@@ -6,26 +6,23 @@ namespace SNRegistros.Dominio.DB
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("FuncionarioJudicial")]
-    public partial class FuncionarioJudicial
+    public partial class AccionesJudiciale
     {
-        public FuncionarioJudicial()
+        public AccionesJudiciale()
         {
             RegistrosJudiciales = new HashSet<RegistrosJudiciale>();
         }
 
         [Key]
-        public int FuncJudicialId { get; set; }
+        public int AccJudID { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string Nombre { get; set; }
+        public string NombreAJ { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string Apellido { get; set; }
+        public int ProcesoJudID { get; set; }
 
-        public int JuzgadoID { get; set; }
+        public virtual ProcesosJudiciale ProcesosJudiciale { get; set; }
 
         public virtual ICollection<RegistrosJudiciale> RegistrosJudiciales { get; set; }
     }

@@ -50,13 +50,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccionesJudicialesManagers.cs" />
     <Compile Include="AccionesManagers.cs" />
+    <Compile Include="AccionesPolicialesManagers.cs" />
     <Compile Include="CiudadanosManagers.cs" />
+    <Compile Include="ComisariasManagers.cs" />
     <Compile Include="DoctoresManagers.cs" />
+    <Compile Include="FuncionariosJudicialesManagers.cs" />
     <Compile Include="HospitalesManagers.cs" />
+    <Compile Include="JuzgadosManagers.cs" />
+    <Compile Include="PoliciasManagers.cs" />
+    <Compile Include="ProcesosJudicialesManagers.cs" />
     <Compile Include="ProcesosManagers.cs" />
+    <Compile Include="ProcesosPolicialesManagers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrosJudicialesManagers.cs" />
     <Compile Include="RegistrosMedicosManagers.cs" />
+    <Compile Include="RegistrosPolicialesManagers.cs" />
     <Compile Include="Utilidadades\AgregarModificar.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -65,7 +75,7 @@
       <Name>SNRegistros.Aplicacion.Dto</Name>
     </ProjectReference>
     <ProjectReference Include="..\SNRegistros.Dominio.DB\SNRegistros.Dominio.DB.csproj">
-      <Project>{ee88a472-59b7-463a-9238-d59b654590d5}</Project>
+      <Project>{0819221b-4631-4717-a63a-fbfd7157e2e6}</Project>
       <Name>SNRegistros.Dominio.DB</Name>
     </ProjectReference>
   </ItemGroup>

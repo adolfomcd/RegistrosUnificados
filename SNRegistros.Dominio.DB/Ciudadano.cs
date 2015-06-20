@@ -11,7 +11,7 @@ namespace SNRegistros.Dominio.DB
     {
         public Ciudadano()
         {
-            RegistroPolicials = new HashSet<RegistroPolicial>();
+            RegistrosPoliciales = new HashSet<RegistrosPoliciale>();
             RegistrosJudiciales = new HashSet<RegistrosJudiciale>();
             RegistrosMedicos = new HashSet<RegistrosMedico>();
         }
@@ -26,7 +26,7 @@ namespace SNRegistros.Dominio.DB
         [StringLength(50)]
         public string Apellido { get; set; }
 
-        public virtual ICollection<RegistroPolicial> RegistroPolicials { get; set; }
+        public virtual ICollection<RegistrosPoliciale> RegistrosPoliciales { get; set; }
 
         public virtual ICollection<RegistrosJudiciale> RegistrosJudiciales { get; set; }
 

@@ -17,25 +17,25 @@
         (function () {
             'use strict';
             angular
-                .module('GestorMedicoApp')
-                .factory('GestorMedicoResourse', GestorMedicoResourse);
+                .module('GestorJudicialApp')
+                .factory('GestorJudicialResourse', GestorJudicialResourse);
 
             GestorMedicoResourse.$inject = ['$resource', '$http'];
 
             function GestorMedicoResourse($resource, $http) {
                 var Ciudadanos = $resource("@Href("~/api/Ciudadanos")");
-                var Doctores = $resource("@Href("~/api/Doctores")");
-                var Hospitales = $resource("@Href("~/api/Hospitales")");
-                var Procesos = $resource("@Href("~/api/Procesos")");
-                var Acciones = $resource("@Href("~/api/Acciones")");
+                var FuncionariosJudiciales = $resource("@Href("~/api/FuncionariosJudiciales")");
+                var Juzgados = $resource("@Href("~/api/Juzgados")");
+                var ProcesosJudiciales = $resource("@Href("~/api/ProcesosJudiciales")");
+                var AccionJudicial = $resource("@Href("~/api/AccionJudicial")");
                 var AccionesSegunProcesoID = $resource("@Href("~/api/Acciones/SegunProcesoID")");
                 var RegistroMedicos = $resource("@Href("~/api/RegistroMedicos")");
                 return {
                     "Ciudadanos": Ciudadanos,
-                    "Doctores": Doctores,
-                    "Hospitales": Hospitales,
-                    "Procesos": Procesos,
-                    "Acciones": Acciones,
+                    "FuncionariosJudiciales": FuncionariosJudiciales,
+                    "Juzgados": Juzgados,
+                    "ProcesosJudiciales": ProcesosJudiciales,
+                    "AccionJudicial": AccionJudicial,
                     "AccionesSegunProcesoID": AccionesSegunProcesoID,
                     "RegistroMedicos": RegistroMedicos
                 }
