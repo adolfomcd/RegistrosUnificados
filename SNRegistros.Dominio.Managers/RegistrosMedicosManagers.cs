@@ -7,40 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SNRegistros.Dominio.Managers
-{
-    public class RegistrosMedicosManagers
-    {
-        public List<RegistroMedicoDto> ListadoRegistroMedico()
-        {
-            using (var context = new SNRegistroModel())
-            {
+namespace SNRegistros.Dominio.Managers {
+    public class RegistrosMedicosManagers {
+        public List<RegistroMedicoDto> ListadoRegistroMedico() {
+            using (var context = new SNRegistroModel()) {
                 var listado = context.RegistrosMedicos
-                    .Select(s => new RegistroMedicoDto()
-                    {
+                    .Select(s => new RegistroMedicoDto() {
                         RegistroMedicoID = s.RegistroMedicoID,
-                        Doctore = new DoctoreDto()
-                        {
+                        Doctore = new DoctoreDto() {
                             MedicoID = s.MedicoID,
                             Nombre = s.Doctore.Nombre,
                             Apellido = s.Doctore.Apellido
                         },
-                        Ciudadano = new CiudadanoDto()
-                        {
+                        Ciudadano = new CiudadanoDto() {
                             CiudadanoID = s.Ciudadanoid,
                             Nombre = s.Ciudadano.Nombre
                         },
-                        Hospitale = new HospitaleDto()
-                        {
+                        Hospitale = new HospitaleDto() {
                             HospitalID = s.HospitalID,
                             Nombre = s.Hospitale.Nombre
                         },
-                        Accione = new AccioneDto()
-                        {
+                        Accione = new AccioneDto() {
                             AccionID = s.AccionID,
                             Nombre = s.Accione.Nombre,
-                            Proceso = new ProcesoDto()
-                            {
+                            Proceso = new ProcesoDto() {
                                 ProcesoID = s.Accione.ProcesoID,
                                 Nombre = s.Accione.Proceso.Nombre
                             }
@@ -51,14 +41,11 @@ namespace SNRegistros.Dominio.Managers
             }
         }
 
-        public MensajeDto CargarRegistroMedico(RegistroMedicoDto mDto)
-        {
-            if (mDto.RegistroMedicoID > 0)
-            {
+        public MensajeDto CargarRegistroMedico(RegistroMedicoDto mDto) {
+            if (mDto.RegistroMedicoID > 0) {
                 return EditarMovimiento(mDto);
             }
-            using (var context = new SNRegistroModel())
-            {
+            using (var context = new SNRegistroModel()) {
                 MensajeDto mensajeDto = null;
                 var RegistroMedicoDb = new RegistrosMedico();
                 RegistroMedicoDb.Ciudadanoid = mDto.Ciudadano.CiudadanoID;
@@ -72,8 +59,7 @@ namespace SNRegistros.Dominio.Managers
                 if (mensajeDto != null) { return mensajeDto; }
                 mDto.RegistroMedicoID = RegistroMedicoDb.RegistroMedicoID;
 
-                return new MensajeDto()
-                {
+                return new MensajeDto() {
                     Error = false,
                     MensajeDelProceso = "Se cargo el movimiento : " + RegistroMedicoDb.RegistroMedicoID,
                     ObjetoDto = mDto
@@ -81,10 +67,8 @@ namespace SNRegistros.Dominio.Managers
             }
         }
 
-        private MensajeDto EditarMovimiento(RegistroMedicoDto mDto)
-        {
-            using (var context = new SNRegistroModel())
-            {
+        private MensajeDto EditarMovimiento(RegistroMedicoDto mDto) {
+            using (var context = new SNRegistroModel()) {
                 MensajeDto mensajeDto = null;
                 var movimientoDb = context.RegistrosMedicos
                     .Where(m => m.RegistroMedicoID == mDto.RegistroMedicoID)
@@ -99,8 +83,7 @@ namespace SNRegistros.Dominio.Managers
                 context.Entry(movimientoDb).State = System.Data.Entity.EntityState.Modified;
                 mensajeDto = AgregarModificar.Hacer(context, mensajeDto);
                 if (mensajeDto != null) { return mensajeDto; }
-                return new MensajeDto()
-                {
+                return new MensajeDto() {
                     Error = false,
                     MensajeDelProceso = "Se Edito el movimiento : " + mDto.RegistroMedicoID,
                     ObjetoDto = mDto
@@ -109,10 +92,8 @@ namespace SNRegistros.Dominio.Managers
             }
         }
 
-        public MensajeDto EliminarMovimiento(int id)
-        {
-            using (var context = new SNRegistroModel())
-            {
+        public MensajeDto EliminarMovimiento(int id) {
+            using (var context = new SNRegistroModel()) {
                 MensajeDto mensajeDto = null;
                 var movimientoDb = context.RegistrosMedicos
                     .Where(m => m.RegistroMedicoID == id)
@@ -122,10 +103,51 @@ namespace SNRegistros.Dominio.Managers
                 mensajeDto = AgregarModificar.Hacer(context, mensajeDto);
                 if (mensajeDto != null) { return mensajeDto; }
 
-                return new MensajeDto()
-                {
+                return new MensajeDto() {
                     Error = false,
                     MensajeDelProceso = "Se elimino el movimiento : " + movimientoDb.RegistroMedicoID
+                };
+            }
+        }
+
+        public MensajeDto ListadoRegistroMedico(RegistroMedicoDto rDto) {
+            using (var context = new SNRegistroModel()) {
+                var listado = context.RegistrosMedicos
+                         .Select(s => new RegistroMedicoDto() {
+                             RegistroMedicoID = s.RegistroMedicoID,
+                             Doctore = new DoctoreDto() {
+                                 MedicoID = s.MedicoID,
+                                 Nombre = s.Doctore.Nombre,
+                                 Apellido = s.Doctore.Apellido
+                             },
+                             Ciudadano = new CiudadanoDto() {
+                                 CiudadanoID = s.Ciudadanoid,
+                                 Nombre = s.Ciudadano.Nombre
+                             },
+                             Hospitale = new HospitaleDto() {
+                                 HospitalID = s.HospitalID,
+                                 Nombre = s.Hospitale.Nombre
+                             },
+                             Accione = new AccioneDto() {
+                                 AccionID = s.AccionID,
+                                 Nombre = s.Accione.Nombre,
+                                 Proceso = new ProcesoDto() {
+                                     ProcesoID = s.Accione.ProcesoID,
+                                     Nombre = s.Accione.Proceso.Nombre
+                                 }
+                             },
+                             Comentario = s.Comentario
+                         }).AsQueryable();
+
+                if (rDto.Ciudadano != null) {
+                    listado = listado
+                        .Where(s => s.Ciudadano.CiudadanoID == rDto.Ciudadano.CiudadanoID);
+                }
+
+                return new MensajeDto() {
+                    Error = false,
+                    MensajeDelProceso = "Listado generado: " ,
+                    ObjetoDto = listado.ToList()                    
                 };
             }
         }

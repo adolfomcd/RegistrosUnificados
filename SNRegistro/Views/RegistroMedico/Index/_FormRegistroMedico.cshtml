@@ -71,7 +71,7 @@
     <button ng-click="vm.guardar()" ng-disabled="GestorMedicoForm.$invalid" class="btn btn-default">
         <span ng-show="vm.GestorMedico.RegistroMedicoID == null">Cargar</span>
         <span ng-show="vm.GestorMedico.RegistroMedicoID != null">
-Editar 
+            Editar
         </span>
 
     </button>
@@ -85,12 +85,12 @@ Editar
             {{vm.MensajeDelProceso}}
         </div>
     </div>
-    <pre>
-        {{vm.GestorMedico | json}}
-        </pre>
     @*<pre>
-    {{vm | json }}
-</pre>*@
+        {{vm.GestorMedico | json}}
+        </pre>*@
+    @*<pre>
+            {{vm | json }}
+        </pre>*@
 </form>
 
 

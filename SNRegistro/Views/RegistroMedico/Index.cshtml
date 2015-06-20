@@ -17,6 +17,7 @@
 
             function GestorMedicoResourse($resource, $http) {
                 var Ciudadanos = $resource("@Href("~/api/Ciudadanos")");
+                var FiltroPorRegistroMedicoDto = $resource("@Href("~/api/RegistroMedicos/FiltroPorRegistroMedicoDto")");
                 var Doctores = $resource("@Href("~/api/Doctores")");
                 var Hospitales = $resource("@Href("~/api/Hospitales")");
                 var Procesos = $resource("@Href("~/api/Procesos")");
@@ -30,7 +31,8 @@
                     "Procesos": Procesos,
                     "Acciones": Acciones,
                     "AccionesSegunProcesoID": AccionesSegunProcesoID,
-                    "RegistroMedicos": RegistroMedicos
+                    "RegistroMedicos": RegistroMedicos,
+                    "FiltroPorRegistroMedicoDto": FiltroPorRegistroMedicoDto
                 }
             }
         })();
@@ -40,6 +42,7 @@
     <script src="~/Scripts/registroMedico/index/controllers/GestorMedicoCtrl.js"></script>
     <script src="~/Scripts/registroMedico/index/controllers/listadoRegistroMCtrl.js"></script>
     <script src="~/Scripts/registroMedico/index/controllers/modal/modalCrearCiudadanoCtrl.js"></script>
+    <script src="~/Scripts/registroMedico/index/controllers/busquedaCtrl.js"></script>
 }
 <div class="container" style="margin-top:20px;">
     <div class="row">

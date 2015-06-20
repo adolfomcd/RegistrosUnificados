@@ -1,0 +1,29 @@
+﻿<form class="form-horizontal" role="form" name="busquedaForm" ng-controller="busquedaCtrl as vm">
+    <div class="form-group">
+        <label for="Ciudadano" class="col-md-4 control-label">Por ciudadano</label>
+        <div class="col-md-8">
+            <input type="text" name="Ciudadano" ng-required="true" ng-model="vm.GestorMedico.Ciudadano" typeahead="Ciudadano as Ciudadano.Nombre + ' ' + Ciudadano.Apellido for Ciudadano in vm.Ciudadanos | filter:$viewValue | limitTo:8" class="form-control">
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom:25px;">
+        <div class="col-md-8">
+            <div class="col-md-8">
+                <span>
+                    <button ng-click="vm.buscar()" class="btn btn-default">
+                        Buscar
+                    </button>
+                </span>
+                <span>
+                    <button ng-click="vm.nuevaBusqueda()" class="btn btn-default">
+                        Nueva busqueda
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            {{vm.mensaje}}
+        </div>
+    </div>
+    @*<pre>{{vm.GestorMedico | json}}</pre>*@
+</form>
