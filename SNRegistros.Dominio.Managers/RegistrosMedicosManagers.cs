@@ -151,5 +151,26 @@ namespace SNRegistros.Dominio.Managers {
                 };
             }
         }
+
+        public MensajeDto EliminarRegistroMedico(int id)
+        {
+            using (var context = new SNRegistroModel())
+            {
+                MensajeDto mensajeDto = null;
+                var registroMedicoDb = context.RegistrosMedicos
+                    .Where(s => s.RegistroMedicoID == id)
+                    .First();
+
+                context.RegistrosMedicos.Remove(registroMedicoDb);
+                mensajeDto = AgregarModificar.Hacer(context, mensajeDto);
+                if (mensajeDto != null) { return mensajeDto; }
+
+                return new MensajeDto()
+                {
+                    Error = false,
+                    MensajeDelProceso = "Se elimino el registro medico : " + id
+                };
+            }
+        }
     }
 }

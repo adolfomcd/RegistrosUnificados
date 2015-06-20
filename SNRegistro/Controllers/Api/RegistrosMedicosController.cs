@@ -40,7 +40,11 @@ namespace SNRegistro.Controllers.Api {
         }
 
         // DELETE: api/RegistroMedicos/5
-        public void Delete(int id) {
+        public HttpResponseMessage Delete(int id)
+        {
+            RegistrosMedicosManagers rm = new RegistrosMedicosManagers();
+            MensajeDto mensaje = rm.EliminarRegistroMedico(id);
+            return Request.CreateResponse(HttpStatusCode.Created, mensaje);
         }
     }
 }
