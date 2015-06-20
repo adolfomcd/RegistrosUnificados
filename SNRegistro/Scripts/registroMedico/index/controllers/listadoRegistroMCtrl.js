@@ -35,8 +35,8 @@
         /* jshint validthis:true */
         var vm = this;
         traerRegistroMedicos();
-        vm.actualizar = function (RegistroMedicos) {
-            $rootScope.$broadcast('actualizarRegistrosMedicos', RegistroMedicos);
+        vm.actualizar = function (RegistroMedico) {
+            $rootScope.$broadcast('actualizarRegistroMedico', RegistroMedico);
         }
         //Escuchando eventos de otros controladores
         $rootScope.$on("actualizarListadoMedico", function (event, objetoRecibido) {
