@@ -55,14 +55,11 @@
             </ul>
             <div style="margin-top:25px;" ng-show="vm.menu.listado.mostrar">
                 <div class="alert alert-danger">
-                    LISTADO
+                    LISTADO TOTAL
                 </div>
             </div>
             <div style="margin-top:25px;" ng-show="vm.menu.busqueda.mostrar">
-                @*@Html.Partial("Index/_FormBusqueda")*@
-                <div class="alert alert-danger">
-                    BUSQUEDA
-                </div>
+                @Html.Partial("Index/_FormBusqueda")                
             </div>
         </div>
 
@@ -98,3 +95,7 @@
             </table>
         </div>
     </div>
+    @*<pre>
+{{vm.RegistroMedicos | json}}
+</pre>*@
+</div>

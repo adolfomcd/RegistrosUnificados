@@ -41,6 +41,10 @@
         //Escuchando eventos de otros controladores
         $rootScope.$on("actualizarListadoMedico", function (event, objetoRecibido) {
             vm.RegistroMedicos = GestorMedicoResource.RegistroMedicos.query();
+            vm.listadoFn();
+        });
+        $rootScope.$on("actualizarListadoMedicoSegunFiltro", function (event, objetoRecibido) {
+            vm.RegistroMedicos = objetoRecibido;
         });
 
         ////Menu

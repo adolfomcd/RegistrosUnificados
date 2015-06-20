@@ -1013,6 +1013,7 @@
     <Content Include="Scripts\registroJudicial\index\controllers\listadoRegistroJCtrl.js" />
     <Content Include="Scripts\registroJudicial\index\controllers\modal\modalCrearCiudadanoCtrl.js" />
     <Content Include="Scripts\registroJudicial\index\services\common.services.js" />
+    <Content Include="Scripts\registroMedico\index\controllers\busquedaCtrl.js" />
     <Content Include="Scripts\registroMedico\index\controllers\GestorMedicoCtrl.js" />
     <Content Include="Scripts\registroMedico\index\controllers\listadoRegistroMCtrl.js" />
     <Content Include="Scripts\registroMedico\index\controllers\modal\modalCrearCiudadanoCtrl.js" />
@@ -1083,6 +1084,9 @@
     <Content Include="Views\RegistroJudicial\Index\_FormRegistroMedico.cshtml" />
     <Content Include="Views\RegistroPolicial\Index\_ListadoRegistroP.cshtml" />
     <Content Include="Views\RegistroPolicial\Index\_FormRegistroPolicial.cshtml" />
+    <Content Include="Views\RegistroPolicial\Index\_ListadoRegistroM.cshtml" />
+    <Content Include="Views\RegistroPolicial\Index\_FormRegistroMedico.cshtml" />
+    <Content Include="Views\RegistroMedico\Index\_FormBusqueda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
