@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('GestorPololicialApp')
-        .controller('GestorPololicialCtrl', GestorPololicialCtrl);
+        .module('GestorPolicialApp')
+        .controller('GestorPolicialCtrl', GestorPolicialCtrl);
 
-    GestorPololicialCtrl.$inject = ['$scope', '$rootScope', '$modal', 'GestorPolicialResourse'];
+    GestorPolicialCtrl.$inject = ['$scope', '$rootScope', '$modal', 'GestorPolicialResourse'];
 
-    function GestorPololicialCtrl($scope, $rootScope, $modal, GestorPolicialResourse) {
+    function GestorPolicialCtrl($scope, $rootScope, $modal, GestorPolicialResourse) {
         /* jshint validthis:true */
         var vm = this;
         vm.Ciudadanos = GestorPolicialResourse.Ciudadanos.query();

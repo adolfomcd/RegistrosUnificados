@@ -38,23 +38,23 @@
                         <th colspan="2">Acciones</th>
                         <th>Nro. de Registro</th>
                         <th>Ciudadano</th>
-                        <th>Doctor</th>
-                        <th>Hospital</th>
+                        <th>Policia</th>
+                        <th>Comisaria</th>
                         <th>Proceso</th>
                         <th>Acción</th>
                         <th>Comentario</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="o in vm.RegistroMedicos">
+                    <tr ng-repeat="o in vm.RegistrosPoliciales">
                         <td><button title="Actualizar" class="btn btn-warning btn-sm" ng-click="vm.actualizar(o)"> <i class="glyphicon glyphicon-edit" /></button></td>
                         <td><button title="Eliminar" class="btn btn-danger btn-sm" ng-click="vm.eliminar(o)"><i class=" glyphicon glyphicon-remove" /></button></td>
                         <td>{{o.RegistroMedicoID}}</td>
                         <td>{{o.Ciudadano.Nombre}}</td>
-                        <td>{{o.Doctore.Nombre + " " + o.Doctore.Apellido }}</td>
-                        <td>{{o.Hospitale.Nombre}}</td>
-                        <td>{{o.Accione.Proceso.Nombre}}</td>
-                        <td>{{o.Accione.Nombre}}</td>
+                        <td>{{o.Policia.Nombre + " " + o.Policia.Apellido }}</td>
+                        <td>{{o.Comisaria.Nombre}}</td>
+                        <td>{{o.AccionesPoliciale.ProcesosPoliciale.NombrePP}}</td>
+                        <td>{{o.AccionesPoliciale.Nombre}}</td>
                         <td>{{o.Comentario}}</td>
                     </tr>
                 </tbody>

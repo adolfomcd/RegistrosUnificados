@@ -33,6 +33,14 @@ namespace SNRegistro.Controllers.Api
             MensajeDto mensaje = rm.CargarRegistroPolicial(rDto);
             return Request.CreateResponse(HttpStatusCode.Created, mensaje);
         }
+        [HttpPost]
+        [Route("api/RegistrosPoliciales/FiltroPorRegistrosPolicialeDto")]
+        public HttpResponseMessage PostFiltroPorRegistrosPolicialeDto(RegistrosPolicialeDto rDto)
+        {
+            RegistrosPolicialesManagers rm = new RegistrosPolicialesManagers();
+            MensajeDto mensaje = rm.ListadoRegistroPolicial(rDto);
+            return Request.CreateResponse(HttpStatusCode.Created, mensaje);
+        }
 
         // PUT: api/RegistrosPoliciales/5
         public void Put(int id, [FromBody]string value)
@@ -40,8 +48,11 @@ namespace SNRegistro.Controllers.Api
         }
 
         // DELETE: api/RegistrosPoliciales/5
-        public void Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
+            RegistrosPolicialesManagers rm = new RegistrosPolicialesManagers();
+            MensajeDto mensaje = rm.EliminarRegistroJudicial(id);
+            return Request.CreateResponse(HttpStatusCode.Created, mensaje);
         }
     }
 }

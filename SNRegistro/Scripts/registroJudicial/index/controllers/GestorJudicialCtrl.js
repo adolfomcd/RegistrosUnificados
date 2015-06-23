@@ -18,11 +18,11 @@
         $scope.$watch('vm.GestorJudicial.ProcesoJudicial', function (newValue, oldValue) {
             if (newValue !== oldValue) {
                 if (vm.GestorJudicial.ProcesoJudicial == null) { return; }
-                GestorJudicialResourse.AccionesSegunProcesoID.query(
-                    { ProcesoID: vm.GestorJudicial.ProcesoJudicial.ProcesoJudID },
+                GestorJudicialResourse.AccionesJudicialesSegunProcesoJudID.query(
+                    { ProcesoJudID: vm.GestorJudicial.ProcesoJudicial.ProcesoJudID },
                     function (respuesta) {
-                        vm.Acciones = respuesta;
-                        refrescarCampoSelect("GestorJudicial", vm.Acciones, "Accione", "AccionID");
+                        vm.AccionesJudiciales = respuesta;
+                        refrescarCampoSelect("GestorJudicial", vm.AccionesJudiciales, "AccionesJudiciale", "AccJudID");
                     });
             }
         });
@@ -41,14 +41,14 @@
         }
         //Eventos de usuario
         vm.guardar = function () {
-            GestorJudicialResourse.RegistroMedicos.save(vm.GestorMedico)
+            GestorJudicialResourse.RegistrosJudiciales.save(vm.GestorJudicial)
             .$promise.then(function (respuesta) {
                 //Exitoso
-                vm.GestorMedico = respuesta.ObjetoDto;
+                vm.GestorJudicial = respuesta.ObjetoDto;
                 vm.MensajeDelProceso = respuesta.MensajeDelProceso;
-                refrescarCampoSelect("GestorMedico", vm.Procesos, "Proceso", "ProcesoID");
-                refrescarCampoSelect("GestorMedico", vm.Acciones, "Accione", "AccionID");
-                $rootScope.$broadcast('actualizarListadoMedico', {});
+                refrescarCampoSelect("GestorJudicial", vm.ProcesosJudiciales, "ProcesosJudiciale", "ProcesoJudID");
+                refrescarCampoSelect("GestorJudicial", vm.AccionesJudicialesJudiciales, "AccionesJudicialesJudiciale", "AccJudID");
+                $rootScope.$broadcast('actualizarListadoJudicial', {});
             },
             function () {
                 //Error
@@ -63,7 +63,7 @@
             });
             modalInstance.result.then(function (selectedItem) {
             }, function () {
-                vm.Ciudadanos = GestorMedicoResourse.Ciudadanos.query();
+                vm.Ciudadanos = GestorJudicialResourse.Ciudadanos.query();
                 //$log.info('Modal dismissed at: ' + new Date());
             });
         }

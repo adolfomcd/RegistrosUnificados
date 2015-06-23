@@ -1,22 +1,52 @@
-﻿(function () {
+﻿
+(function () {
     'use strict';
 
     angular
         .module('GestorPolicialApp')
         .controller('listadoRegistroPCtrl', listadoRegistroPCtrl);
 
-    listadoRegistroPCtrl.$inject = ['$rootScope', 'GestorPolicialResourse'];
+    listadoRegistroPCtrl.$inject = ['$rootScope', '$modal', 'GestorPolicialResourse'];
 
-    function listadoRegistroPCtrl($rootScope, GestorPolicialResourse) {
+    function listadoRegistroPCtrl($rootScope, $modal, GestorPolicialResourse) {
         /* jshint validthis:true */
         var vm = this;
-        traerRegistroMedicos();
-        vm.actualizar = function (RegistroPoliciales) {
-            $rootScope.$broadcast('actualizarRegistroPolicial', RegistroMedicos);
+        traerRegistrosPoliciales();
+        vm.actualizar = function (RegistrosPoliciale) {
+            $rootScope.$broadcast('actualizarRegistrosPoliciale', RegistrosPoliciale);
+        }
+        vm.eliminar = function (RegistrosPoliciale) {
+            var modalInstance = $modal.open({
+                templateUrl: 'ModalEliminacion.html',
+                controller: function ($scope, $modalInstance) {
+                    $scope.RegistrosPoliciale = RegistrosPoliciale;
+                    $scope.objeto = {};
+                    $scope.objeto.id = RegistrosPoliciale.RegistroPolicialID;
+                    $scope.objeto.mensaje = "Se eliminara la registro numero ";
+                    $scope.ok = function () {
+                        GestorPolicialResourse.RegistrosPoliciales
+                            .delete({ id: RegistrosPoliciale.RegistroPolicialID },
+                              function (respuesta) {
+                                  $scope.respuesta = respuesta;
+                                  traerRegistrosPoliciales();
+                              });
+
+                        //$rootScope.$broadcast('actualizarTodos', {});
+                    };
+                    $scope.cancel = function () {
+                        $modalInstance.dismiss('cancel');
+                    };
+                },
+                size: 'sm'
+            });
         }
         //Escuchando eventos de otros controladores
-        $rootScope.$on("actualizarListadoPolicial", function (event, objetoRecibido) {
+        $rootScope.$on("actualizarListadoMedico", function (event, objetoRecibido) {
             vm.RegistrosPoliciales = GestorPolicialResourse.RegistrosPoliciales.query();
+            vm.listadoFn();
+        });
+        $rootScope.$on("actualizarListadoMedicoSegunFiltro", function (event, objetoRecibido) {
+            vm.RegistrosPoliciales = objetoRecibido;
         });
 
         ////Menu

@@ -15,7 +15,7 @@ namespace SNRegistro.Controllers.Api
         public HttpResponseMessage Get()
         {
             RegistrosJudicialesManagers rm = new RegistrosJudicialesManagers();
-            List<RegistrosJudicialeDto> listado = rm.ListadoRegistroMedico();
+            List<RegistrosJudicialeDto> listado = rm.ListadoRegistroJudicial();
             return Request.CreateResponse<List<RegistrosJudicialeDto>>(HttpStatusCode.OK, listado);
         }
 
@@ -32,6 +32,14 @@ namespace SNRegistro.Controllers.Api
             MensajeDto mensaje = rm.CargarRegistroJudicial(rDto);
             return Request.CreateResponse(HttpStatusCode.Created, mensaje);
         }
+        [HttpPost]
+        [Route("api/RegistrosJudiciales/FiltroPorRegistroJudicialDto")]
+        public HttpResponseMessage PostFiltroPorRegistroMedicoDto(RegistrosJudicialeDto rDto)
+        {
+            RegistrosJudicialesManagers rm = new RegistrosJudicialesManagers();
+            MensajeDto mensaje = rm.ListadoRegistroJudicial(rDto);
+            return Request.CreateResponse(HttpStatusCode.Created, mensaje);
+        }
 
         // PUT: api/RegistrosJudiciales/5
         public void Put(int id, [FromBody]string value)
@@ -39,8 +47,11 @@ namespace SNRegistro.Controllers.Api
         }
 
         // DELETE: api/RegistrosJudiciales/5
-        public void Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
+            RegistrosJudicialesManagers rm = new RegistrosJudicialesManagers();
+            MensajeDto mensaje = rm.EliminarRegistroJudicial(id);
+            return Request.CreateResponse(HttpStatusCode.Created, mensaje);
         }
     }
 }

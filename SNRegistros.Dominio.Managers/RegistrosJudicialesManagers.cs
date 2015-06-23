@@ -11,7 +11,7 @@ namespace SNRegistros.Dominio.Managers
 {
    public class RegistrosJudicialesManagers
     {
-       public List<RegistrosJudicialeDto> ListadoRegistroMedico()
+       public List<RegistrosJudicialeDto> ListadoRegistroJudicial()
         {
             using (var context = new SNRegistroEntities())
             {
@@ -50,7 +50,6 @@ namespace SNRegistros.Dominio.Managers
                 return listado;
             }
         }
-
         public MensajeDto CargarRegistroJudicial(RegistrosJudicialeDto mDto)
         {
             if (mDto.RegistroJudicialID > 0)
@@ -126,6 +125,78 @@ namespace SNRegistros.Dominio.Managers
                 {
                     Error = false,
                     MensajeDelProceso = "Se elimino el movimiento : " + movimientoDb.RegistroJudicialID
+                };
+            }
+        }
+        public MensajeDto EliminarRegistroJudicial(int id)
+        {
+            using (var context = new SNRegistroEntities())
+            {
+                MensajeDto mensajeDto = null;
+                var registroJudicialDb = context.RegistrosJudiciales
+                    .Where(s => s.RegistroJudicialID == id)
+                    .First();
+
+                context.RegistrosJudiciales.Remove(registroJudicialDb);
+                mensajeDto = AgregarModificar.Hacer(context, mensajeDto);
+                if (mensajeDto != null) { return mensajeDto; }
+
+                return new MensajeDto()
+                {
+                    Error = false,
+                    MensajeDelProceso = "Se elimino el registro judicial : " + id
+                };
+            }
+        }
+
+        public MensajeDto ListadoRegistroJudicial(RegistrosJudicialeDto rDto)
+        {
+            using (var context = new SNRegistroEntities())
+            {
+                var listado = context.RegistrosJudiciales
+                         .Select(s => new RegistrosJudicialeDto()
+                         {
+                             RegistroJudicialID = s.RegistroJudicialID,
+                             FuncionariosJudiciale = new FuncionariosJudicialesDto()
+                             {
+                                 FuncJudicialId = s.FuncJudicialId,
+                                 Nombre = s.FuncionariosJudiciale.Nombre,
+                                 Apellido = s.FuncionariosJudiciale.Apellido
+                             },
+                             Ciudadano = new CiudadanoDto()
+                             {
+                                 CiudadanoID = s.CiudadanoID,
+                                 Nombre = s.Ciudadano.Nombre
+                             },
+                             Juzgado = new JuzgadoDto()
+                             {
+                                 JuzgadoID = s.JuzgadoID,
+                                 Nombre = s.Juzgado.Nombre
+                             },
+                             AccionesJudiciale = new AccionesJudicialeDto()
+                             {
+                                 AccJudID = s.AccJudID,
+                                 NombreAJ = s.AccionesJudiciale.NombreAJ,
+                                 ProcesosJudiciale = new ProcesosJudicialeDto()
+                                 {
+                                     ProcesoJudID = s.AccionesJudiciale.ProcesoJudID,
+                                     NombreProcJud = s.AccionesJudiciale.ProcesosJudiciale.NombreProcJud
+                                 }
+                             },
+                             Comentario = s.Comentario
+                         }).AsQueryable();
+
+                if (rDto.Ciudadano != null)
+                {
+                    listado = listado
+                        .Where(s => s.Ciudadano.CiudadanoID == rDto.Ciudadano.CiudadanoID);
+                }
+
+                return new MensajeDto()
+                {
+                    Error = false,
+                    MensajeDelProceso = "Listado generado: ",
+                    ObjetoDto = listado.ToList()
                 };
             }
         }

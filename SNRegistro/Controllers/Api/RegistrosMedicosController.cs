@@ -10,7 +10,8 @@ using System.Web.Http;
 namespace SNRegistro.Controllers.Api {
     public class RegistroMedicosController : ApiController {
         // GET: api/RegistroMedicos
-        public HttpResponseMessage Get() {
+        public HttpResponseMessage Get() 
+        {
             RegistrosMedicosManagers rm = new RegistrosMedicosManagers();
             List<RegistroMedicoDto> listado = rm.ListadoRegistroMedico();
             return Request.CreateResponse<List<RegistroMedicoDto>>(HttpStatusCode.OK, listado);

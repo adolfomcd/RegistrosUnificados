@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SNRegistros.Dominio.Managers
 {
-   public class RegistrosPolicialesManagers
+    public class RegistrosPolicialesManagers
     {
         public List<RegistrosPolicialeDto> ListadoRegistroPolicial()
         {
@@ -109,7 +109,9 @@ namespace SNRegistros.Dominio.Managers
             }
         }
 
-        public MensajeDto EliminarMovimiento(int id)
+
+
+        public MensajeDto EliminarRegistroJudicial(int id)
         {
             using (var context = new SNRegistroEntities())
             {
@@ -126,6 +128,61 @@ namespace SNRegistros.Dominio.Managers
                 {
                     Error = false,
                     MensajeDelProceso = "Se elimino el movimiento : " + movimientoDb.RegistroPolicialID
+                };
+            }
+        }
+
+
+
+        public MensajeDto ListadoRegistroPolicial(RegistrosPolicialeDto rDto)
+        {
+            using (var context = new SNRegistroEntities())
+            {
+                var listado = context.RegistrosPoliciales
+                        .Select(s => new RegistrosPolicialeDto()
+                        {
+                            RegistroPolicialID = s.RegistroPolicialID,
+                            Policia = new PoliciaDto()
+                            {
+                                PoliciaID = s.PoliciaID,
+                                Nombre = s.Policia.Nombre,
+                                Apellido = s.Policia.Apellido
+                            },
+                            Ciudadano = new CiudadanoDto()
+                            {
+                                CiudadanoID = s.CiudadanoID,
+                                Nombre = s.Ciudadano.Nombre
+                            },
+                            Comisaria = new ComisariaDto()
+                            {
+                                ComisariaID = s.ComisariaID,
+                                Nombre = s.Comisaria.Nombre
+                            },
+                            AccionesPoliciale = new AccionesPolicialeDto()
+                            {
+                                AccPolID = s.AccPolID,
+                                NombreAP = s.AccionesPoliciale.NombreAP,
+                                ProcesosPoliciale = new ProcesosPolicialeDto()
+                                {
+                                    ProcesoPolicialID = s.AccionesPoliciale.ProcesoPolicialID,
+                                    NombrePP = s.AccionesPoliciale.ProcesosPoliciale.NombrePP
+                                }
+                            },
+                            Comentario = s.Comentario
+
+                        }).AsQueryable();
+
+                if (rDto.Ciudadano != null)
+                {
+                    listado = listado
+                        .Where(s => s.Ciudadano.CiudadanoID == rDto.Ciudadano.CiudadanoID);
+                }
+
+                return new MensajeDto()
+                {
+                    Error = false,
+                    MensajeDelProceso = "Listado generado: ",
+                    ObjetoDto = listado.ToList()
                 };
             }
         }

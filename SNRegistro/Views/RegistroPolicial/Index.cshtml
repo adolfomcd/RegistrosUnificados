@@ -19,7 +19,7 @@
                 .module('GestorPolicialApp')
                 .factory('GestorPolicialResourse', GestorPolicialResourse);
 
-            GestorMedicoResourse.$inject = ['$resource', '$http'];
+            GestorPolicialResourse.$inject = ['$resource', '$http'];
 
             function GestorPolicialResourse($resource, $http) {
                 var Ciudadanos = $resource("@Href("~/api/Ciudadanos")");
@@ -43,11 +43,13 @@
     </script>
 
     @*Controladores*@
-
-    <script src="~/Scripts/registroPolicial/index/controllers/GestorPolicialCtrl.js"></script>
-    <script src="~/Scripts/registroPolicial/index/controllers/listadoRegistroPCtrl.js"></script>
-    <script src="~/Scripts/registroMedico/index/controllers/modal/modalCrearCiudadanoCtrl.js"></script>
+<script src="~/Scripts/registroPolicial/index/controllers/GestorPolicialCtrl.js"></script>
+<script src="~/Scripts/registroPolicial/index/controllers/listadoRegistroPCtrl.js"></script>
+<script src="~/Scripts/registroPolicial/index/controllers/modal/modalCrearCiudadanoCtrl.js"></script>
+  
 }
+<div class="container" ng-app="GestorPolicialApp">
+
 <div class="container" style="margin-top:20px;">
     <div class="row">
         <div class="col-md-5">
@@ -81,4 +83,5 @@
         <button class="btn btn-primary" ng-click="ok()" id="btn_save">Eliminar</button>
     </div>
 </script>
+</div>
 

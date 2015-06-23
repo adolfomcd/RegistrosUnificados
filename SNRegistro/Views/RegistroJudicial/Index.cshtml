@@ -1,18 +1,18 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Aplicación Judicial";
 }
 
-@*<h2>Index</h2>
+<h2>RJ</h2>
 
-@{
-    ViewBag.Title = "Index";
-}*@
+    @{
+        ViewBag.Title = "Index";
+    }
 
 @section scripts
     {
 
-    <script src="~/Scripts/registroMedico/index/services/common.services.js"></script>
+    
+<script src="~/Scripts/registroJudicial/index/services/common.services.js"></script>
     <script type="text/javascript">
         (function () {
             'use strict';
@@ -20,46 +20,50 @@
                 .module('GestorJudicialApp')
                 .factory('GestorJudicialResourse', GestorJudicialResourse);
 
-            GestorMedicoResourse.$inject = ['$resource', '$http'];
+            GestorJudicialResourse.$inject = ['$resource', '$http'];
 
-            function GestorMedicoResourse($resource, $http) {
+            function GestorJudicialResourse($resource, $http) {
                 var Ciudadanos = $resource("@Href("~/api/Ciudadanos")");
                 var FuncionariosJudiciales = $resource("@Href("~/api/FuncionariosJudiciales")");
                 var Juzgados = $resource("@Href("~/api/Juzgados")");
                 var ProcesosJudiciales = $resource("@Href("~/api/ProcesosJudiciales")");
                 var AccionJudicial = $resource("@Href("~/api/AccionJudicial")");
-                var AccionesSegunProcesoID = $resource("@Href("~/api/Acciones/SegunProcesoID")");
-                var RegistroMedicos = $resource("@Href("~/api/RegistroMedicos")");
+                var AccionesJudicialesSegunProcesoJudID = $resource("@Href("~/api/AccionesJudiciales/SegunProcesoJudID")");
+                var RegistrosJudiciales = $resource("@Href("~/api/RegistrosJudiciales")");
                 return {
                     "Ciudadanos": Ciudadanos,
                     "FuncionariosJudiciales": FuncionariosJudiciales,
                     "Juzgados": Juzgados,
                     "ProcesosJudiciales": ProcesosJudiciales,
                     "AccionJudicial": AccionJudicial,
-                    "AccionesSegunProcesoID": AccionesSegunProcesoID,
-                    "RegistroMedicos": RegistroMedicos
+                    "AccionesJudicialesSegunProcesoJudID": AccionesJudicialesSegunProcesoJudID,
+                    "RegistrosJudiciales": RegistrosJudiciales
                 }
             }
         })();
     </script>
 
     @*Controladores*@
-    <script src="~/Scripts/registroMedico/index/controllers/GestorMedicoCtrl.js"></script>
-    <script src="~/Scripts/registroMedico/index/controllers/listadoRegistroMCtrl.js"></script>
+
+    <script src="~/Scripts/registroJudicial/index/controllers/GestorJudicialCtrl.js"></script>
+    <script src="~/Scripts/registroJudicial/index/controllers/listadoRegistroJCtrl.js"></script>
     <script src="~/Scripts/registroMedico/index/controllers/modal/modalCrearCiudadanoCtrl.js"></script>
+<script src="~/Scripts/registroJudicial/index/controllers/busquedaCtrl.js"></script>
 }
+<div class="container" ng-app="GestorJudicialApp">
+
 <div class="container" style="margin-top:20px;">
     <div class="row">
         <div class="col-md-5">
             <div class="panel panel-primary">
                 <div class="panel-heading">Registro</div>
                 <div class="panel-body">
-                    @Html.Partial("Index/_FormRegistroMedico")
+                    @Html.Partial("Index/_FormRegistroJudicial")
                 </div>
             </div>
         </div>
         <div class="col-md-7">
-            @Html.Partial("Index/_ListadoRegistroM")
+            @Html.Partial("Index/_ListadoRegistroJ")
         </div>
     </div>
 </div>
@@ -81,3 +85,4 @@
         <button class="btn btn-primary" ng-click="ok()" id="btn_save">Eliminar</button>
     </div>
 </script>
+</div>
