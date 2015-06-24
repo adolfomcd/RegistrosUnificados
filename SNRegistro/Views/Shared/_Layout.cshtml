@@ -31,9 +31,13 @@
                     <li>@Html.ActionLink("Sector Policial", "Index", "RegistroPolicial")</li>
                     <li>@Html.ActionLink("Sector Judicial", "Index", "RegistroJudicial")</li>
                     <li>@Html.ActionLink("Administración", "PaginaAdministrativa", "Home")</li>
+                    @if (User.IsInRole("Admin")) {
+                        <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                        <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                    }
                     @*<li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-            <li>@Html.ActionLink("Sector Médico", "Index", "AgregarCiudadanos")</li>
-            <li>@Html.ActionLink("Sector Médico", "Index", "RegistroMedico")</li>*@
+                        <li>@Html.ActionLink("Sector Médico", "Index", "AgregarCiudadanos")</li>
+                        <li>@Html.ActionLink("Sector Médico", "Index", "RegistroMedico")</li>*@
 
 
 
