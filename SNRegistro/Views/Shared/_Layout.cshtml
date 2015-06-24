@@ -33,6 +33,7 @@
                     <li>@Html.ActionLink("Administración", "PaginaAdministrativa", "Home")</li>
                     @if (User.IsInRole("Admin")) {
                         <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                        <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>                        
                     }
                     @*<li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                         <li>@Html.ActionLink("Sector Médico", "Index", "AgregarCiudadanos")</li>
