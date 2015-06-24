@@ -193,12 +193,15 @@
     <Compile Include="Controllers\RegistroJudicialController.cs" />
     <Compile Include="Controllers\RegistroMedicoController.cs" />
     <Compile Include="Controllers\RegistroPolicialController.cs" />
+    <Compile Include="Controllers\Admin\UsersAdminController.cs" />
+    <Compile Include="Controllers\Admin\RolesAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1099,6 +1102,16 @@
     <Content Include="Views\RegistroMedico\Index\_FormBusqueda.cshtml" />
     <Content Include="Views\RegistroJudicial\Index\_FormBusqueda.cshtml" />
     <Content Include="Views\RegistroPolicial\Index\_FormBusqueda.cshtml" />
+    <Content Include="Views\UsersAdmin\Create.cshtml" />
+    <Content Include="Views\UsersAdmin\Delete.cshtml" />
+    <Content Include="Views\UsersAdmin\Details.cshtml" />
+    <Content Include="Views\UsersAdmin\Edit.cshtml" />
+    <Content Include="Views\UsersAdmin\Index.cshtml" />
+    <Content Include="Views\RolesAdmin\Create.cshtml" />
+    <Content Include="Views\RolesAdmin\Delete.cshtml" />
+    <Content Include="Views\RolesAdmin\Details.cshtml" />
+    <Content Include="Views\RolesAdmin\Edit.cshtml" />
+    <Content Include="Views\RolesAdmin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
