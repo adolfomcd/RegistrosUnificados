@@ -1118,7 +1118,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\FuncionariosJudiciales\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SNRegistros.Aplicacion.Dto\SNRegistros.Aplicacion.Dto.csproj">

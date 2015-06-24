@@ -22,7 +22,7 @@
                     $scope.RegistrosPoliciale = RegistrosPoliciale;
                     $scope.objeto = {};
                     $scope.objeto.id = RegistrosPoliciale.RegistroPolicialID;
-                    $scope.objeto.mensaje = "Se eliminara la registro numero ";
+                    $scope.objeto.mensaje = "Se eliminara el registro numero ";
                     $scope.ok = function () {
                         GestorPolicialResourse.RegistrosPoliciales
                             .delete({ id: RegistrosPoliciale.RegistroPolicialID },
@@ -41,7 +41,7 @@
             });
         }
         //Escuchando eventos de otros controladores
-        $rootScope.$on("actualizarListadoMedico", function (event, objetoRecibido) {
+        $rootScope.$on("actualizarListadoPolicial", function (event, objetoRecibido) {
             vm.RegistrosPoliciales = GestorPolicialResourse.RegistrosPoliciales.query();
             vm.listadoFn();
         });

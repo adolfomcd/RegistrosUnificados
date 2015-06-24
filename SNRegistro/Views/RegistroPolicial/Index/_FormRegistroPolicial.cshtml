@@ -4,7 +4,7 @@
         <label for="Ciudadano" class="col-md-4 control-label">Ciudadano</label>
         <div class="col-md-8">
             <div class="input-group">
-                <input type="text" name="Ciudadano" ng-required="true" ng-model="vm.GestorJudicial.Ciudadano" typeahead="Ciudadano as Ciudadano.Nombre + ' ' + Ciudadano.Apellido for Ciudadano in vm.Ciudadanos | filter:$viewValue | limitTo:8" class="form-control">
+                <input type="text" name="Ciudadano" ng-required="true" ng-model="vm.GestorPolicial.Ciudadano" typeahead="Ciudadano as Ciudadano.Nombre + ' ' + Ciudadano.Apellido for Ciudadano in vm.Ciudadanos | filter:$viewValue | limitTo:8" class="form-control">
                 <span class="input-group-btn">
                     <button class="btn btn-default" ng-click="vm.crearCiudadano()" type="button">Crear</button>
                 </span>
@@ -15,7 +15,7 @@
         <label for="policia" class="col-md-4 control-label">Policia</label>
         <div class="col-md-8">
             <div class="input-group">
-                <input type="text" name="policia" ng-required="true" ng-model="vm.GestorJudicial.Policia" typeahead="policia as policia.Nombre + ' ' + policia.Apellido for policia in vm.Policias | filter:$viewValue | limitTo:8" class="form-control">
+                <input type="text" name="policia" ng-required="true" ng-model="vm.GestorPolicial.Policia" typeahead="policia as policia.Nombre + ' ' + policia.Apellido for policia in vm.Policias | filter:$viewValue | limitTo:8" class="form-control">
                 <span class="input-group-btn">
                     <button class="btn btn-default" ng-click="vm.crearDoctor()" type="button">Crear</button>
                 </span>
@@ -26,7 +26,7 @@
         <label for="comisaria" class="col-md-4 control-label">Comisaria</label>
         <div class="col-md-8">
             <div class="input-group">
-                <input type="text" name="comisaria" ng-required="true" ng-model="vm.GestorJudicial.Comisaria" typeahead="Comisaria as Comisaria.Nombre + ' ' + Comisaria.CiudadID for Comisaria in vm.Comisarias | filter:$viewValue | limitTo:8" class="form-control">
+                <input type="text" name="comisaria" ng-required="true" ng-model="vm.GestorPolicial.Comisaria" typeahead="Comisaria as Comisaria.Nombre + ' ' + Comisaria.CiudadID for Comisaria in vm.Comisarias | filter:$viewValue | limitTo:8" class="form-control">
                 <span class="input-group-btn">
                     <button class="btn btn-default" ng-click="vm.crearDoctor()" type="button">Crear</button>
                 </span>
@@ -35,27 +35,27 @@
     </div>
 
     <div class="form-group">
-        <label for="proceso" class="col-md-4 control-label">Proceso</label>
+        <label for="ProcesosPoliciale" class="col-md-4 control-label">Proceso</label>
         <div class="col-md-8">
-            <select name="Proceso" required
-                    ng-model="vm.GestorMedico.Proceso"
-                    ng-options="r.Nombre for r in vm.Procesos" class="form-control"
+            <select name="ProcesosPoliciale" required
+                    ng-model="vm.GestorPolicial.ProcesosPoliciale"
+                    ng-options="r.Nombre for r in vm.ProcesosPoliciales" class="form-control"
                     ng-required="true">
                 <!--<option value="">-- Seleccione el concepto --</option>-->
-                <option value="" ng-hide="vm.GestorMedico.Proceso">Seleccione Proceso</option>
+                <option value="" ng-hide="vm.GestorPolicial.ProcesosPoliciale">Seleccione Proceso</option>
             </select>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="Accione" class="col-md-4 control-label">Acción</label>
+        <label for="AccionesPoliciale" class="col-md-4 control-label">Acción</label>
         <div class="col-md-8">
-            <select name="Accione" required
-                    ng-model="vm.GestorMedico.Accione"
-                    ng-options="r.Nombre for r in vm.Acciones" class="form-control"
+            <select name="AccionesPoliciale" required
+                    ng-model="vm.GestorPolicial.AccionesPoliciale"
+                    ng-options="r.Nombre for r in vm.AccionesPoliciales" class="form-control"
                     ng-required="true">
 
-                <option value="" ng-hide="vm.GestorMedico.Accione">Seleccione Acción</option>
+                <option value="" ng-hide="vm.GestorPolicial.AccionesPoliciale">Seleccione Acción</option>
             </select>
         </div>
     </div>
@@ -63,15 +63,15 @@
         <label for="Comentario" class="col-md-4 control-label">Comentario</label>
         <div class="col-md-8">
             <div class="input-group">
-                <input type="text" name="Comentario" ng-required="true" ng-model="vm.GestorMedico.Comentario" class="form-control">
+                <input type="text" name="Comentario" ng-required="true" ng-model="vm.GestorPolicial.Comentario" class="form-control">
             </div>
         </div>
     </div>
 
 
-    <button ng-click="vm.guardar()" ng-disabled="GestorMedicoForm.$invalid" class="btn btn-default">
-        <span ng-show="vm.GestorMedico.RegistroMedicoID == null">Cargar</span>
-        <span ng-show="vm.GestorMedico.RegistroMedicoID != null">
+    <button ng-click="vm.guardar()" ng-disabled="GestorPolicialForm.$invalid" class="btn btn-default">
+        <span ng-show="vm.GestorPolicial.RegistroPolicialID == null">Cargar</span>
+        <span ng-show="vm.GestorPolicial.RegistroPolicialID != null">
 Editar 
         </span>
 

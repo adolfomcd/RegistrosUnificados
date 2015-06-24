@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('GestorMedicoApp')
+        .module('GestorJudicialApp')
         .controller('ModalCrearCiudadanoCtrl', ModalCrearCiudadanoCtrl);
 
-    ModalCrearCiudadanoCtrl.$inject = ['$scope', '$modalInstance', 'GestorMedicoResourse'];
+    ModalCrearCiudadanoCtrl.$inject = ['$scope', '$modalInstance', 'GestorJudicialResourse'];
 
-    function ModalCrearCiudadanoCtrl($scope, $modalInstance, GestorMedicoResourse) {
+    function ModalCrearCiudadanoCtrl($scope, $modalInstance, GestorJudicialResourse) {
         /* jshint validthis:true */
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
@@ -18,7 +18,7 @@
         };
 
         $scope.guardar = function () {
-            GestorMedicoResourse.Ciudadanos.save($scope.Ciudadano)
+            GestorJudicialResourse.Ciudadanos.save($scope.Ciudadano)
            .$promise.then(
                function (mensaje) {
                    if (!mensaje.error) {

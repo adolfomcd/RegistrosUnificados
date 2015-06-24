@@ -7,16 +7,16 @@
 
     listadoRegistroJCtrl.$inject = ['$rootScope', 'GestorJudicialResourse'];
 
-    function listadoRegistroJCtrl($rootScope, GestorJudicialResource) {
+    function listadoRegistroJCtrl($rootScope, GestorJudicialResourse) {
         /* jshint validthis:true */
         var vm = this;
         traerRegistroJudicial();
-        vm.actualizar = function (RegistroJudicial) {
-            $rootScope.$broadcast('actualizarRegistroJudicial', RegistroJudicial);
+        vm.actualizar = function (RegistrosJudiciales) {
+            $rootScope.$broadcast('actualizarRegistrosJudiciales', RegistroJudicial);
         }
         //Escuchando eventos de otros controladores
-        $rootScope.$on("actualizarListadoJudicial", function (event, objetoRecibido) {
-            vm.RegistroJudicial = GestorJudicialResource.RegistroJudicial.query();
+        $rootScope.$on("actualizarRegistrosJudiciales", function (event, objetoRecibido) {
+            vm.RegistrosJudiciales = GestorJudicialResourse.RegistrosJudiciales.query();
         });
 
         ////Menu
@@ -25,14 +25,14 @@
             ocultar();
             vm.menu.listado.class = "active";
             vm.menu.listado.mostrar = true;
-            traerRegistroJudicial();
+            traerRegistrosJudiciales();
             vm.pestanaSeleccionada = "listado";
         }
         vm.busquedaFn = function () {
             ocultar();
             vm.menu.busqueda.class = "active";
             vm.menu.busqueda.mostrar = true;
-            vm.RegistroJudicial = {};
+            vm.RegistrosJudiciales = {};
             vm.pestanaSeleccionada = "busqueda";
         }
         //////
@@ -41,7 +41,7 @@
             vm.menu.busqueda = {};
         }
         function traerRegistroJudicial() {
-            vm.RegistroJudicial = GestorJudicialResource.RegistroJudicial.query();
+            vm.RegistrosJudiciales = GestorJudicialResourse.RegistrosJudiciales.query();
         }
         ////
         vm.listadoFn();

@@ -14,10 +14,10 @@
         vm.Ciudadanos = GestorJudicialResourse.Ciudadanos.query();
 
         vm.buscar = function () {
-            GestorJudicialResourse.FiltroPorRegistroMedicoDto.save(vm.GestorJudicial)
+            GestorJudicialResourse.FiltroPorRegistroJudicialDto.save(vm.GestorJudicial)
                 .$promise.then(function (respuesta) {
                     //Exitoso
-                    $rootScope.$broadcast('actualizarListadoMedicoSegunFiltro', respuesta.ObjetoDto);
+                    $rootScope.$broadcast('actualizarListadoJudicialSegunFiltro', respuesta.ObjetoDto);
                 },
             function () {
                 //Error

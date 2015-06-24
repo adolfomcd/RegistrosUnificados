@@ -49,12 +49,12 @@
     <div class="form-group">
         <label for="Accione" class="col-md-4 control-label">Acción</label>
         <div class="col-md-8">
-            <select name="Accione" required
-                    ng-model="vm.GestorJudicial.Accione"
-                    ng-options="r.Nombre for r in vm.Acciones" class="form-control"
+            <select name="AccionesJudiciale" required
+                    ng-model="vm.GestorJudicial.AccionesJudiciale"
+                    ng-options="r.Nombre for r in vm.AccionesJudiciale" class="form-control"
                     ng-required="true">
 
-                <option value="" ng-hide="vm.GestorJudicial.Accione">Seleccione Acción</option>
+                <option value="" ng-hide="vm.GestorJudicial.AccionesJudiciale">Seleccione Acción</option>
             </select>
         </div>
     </div>
@@ -69,9 +69,9 @@
 
 
     <button ng-click="vm.guardar()" ng-disabled="GestorJudicialForm.$invalid" class="btn btn-default">
-        <span ng-show="vm.GestorJudicial.RegistroMedicoID == null">Cargar</span>
-        <span ng-show="vm.GestorJudicial.RegistroMedicoID != null">
-Editar 
+        <span ng-show="vm.GestorJudicial.RegistroJudicialID == null">Cargar</span>
+        <span ng-show="vm.GestorJudicial.RegistroJudicialID != null">
+            Editar
         </span>
 
     </button>
