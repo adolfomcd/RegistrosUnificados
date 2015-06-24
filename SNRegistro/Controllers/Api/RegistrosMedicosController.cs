@@ -10,7 +10,8 @@ using System.Web.Http;
 namespace SNRegistro.Controllers.Api {
     public class RegistroMedicosController : ApiController {
         // GET: api/RegistroMedicos
-        public HttpResponseMessage Get() {
+        public HttpResponseMessage Get() 
+        {
             RegistrosMedicosManagers rm = new RegistrosMedicosManagers();
             List<RegistroMedicoDto> listado = rm.ListadoRegistroMedico();
             return Request.CreateResponse<List<RegistroMedicoDto>>(HttpStatusCode.OK, listado);
@@ -40,7 +41,11 @@ namespace SNRegistro.Controllers.Api {
         }
 
         // DELETE: api/RegistroMedicos/5
-        public void Delete(int id) {
+        public HttpResponseMessage Delete(int id)
+        {
+            RegistrosMedicosManagers rm = new RegistrosMedicosManagers();
+            MensajeDto mensaje = rm.EliminarRegistroMedico(id);
+            return Request.CreateResponse(HttpStatusCode.Created, mensaje);
         }
     }
 }

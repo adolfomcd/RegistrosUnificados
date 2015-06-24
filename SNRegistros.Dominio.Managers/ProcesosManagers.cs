@@ -12,7 +12,7 @@ namespace SNRegistros.Dominio.Managers
     {
         public List<ProcesoDto> Listado()
         {
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 var listado = context.Procesos
                     .Select(s => new ProcesoDto()

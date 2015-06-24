@@ -1,64 +1,67 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "AplicacionPolicial";
 }
 
 <h2>Aplicación Policial</h2>
 @*@{
-    ViewBag.Title = "Index";
-}*@
+        ViewBag.Title = "Index";
+    }*@
 
 @section scripts
     {
 
-    <script src="~/Scripts/registroMedico/index/services/common.services.js"></script>
+ 
+<script src="~/Scripts/registroPolicial/index/services/common.services.js"></script>
     <script type="text/javascript">
         (function () {
             'use strict';
             angular
-                .module('GestorMedicoApp')
-                .factory('GestorMedicoResourse', GestorMedicoResourse);
+                .module('GestorPolicialApp')
+                .factory('GestorPolicialResourse', GestorPolicialResourse);
 
-            GestorMedicoResourse.$inject = ['$resource', '$http'];
+            GestorPolicialResourse.$inject = ['$resource', '$http'];
 
-            function GestorMedicoResourse($resource, $http) {
+            function GestorPolicialResourse($resource, $http) {
                 var Ciudadanos = $resource("@Href("~/api/Ciudadanos")");
-                var Doctores = $resource("@Href("~/api/Doctores")");
-                var Hospitales = $resource("@Href("~/api/Hospitales")");
-                var Procesos = $resource("@Href("~/api/Procesos")");
-                var Acciones = $resource("@Href("~/api/Acciones")");
-                var AccionesSegunProcesoID = $resource("@Href("~/api/Acciones/SegunProcesoID")");
-                var RegistroMedicos = $resource("@Href("~/api/RegistroMedicos")");
+                var Policias = $resource("@Href("~/api/Policias")");
+                var Comisarias = $resource("@Href("~/api/Comisarias")");
+                var ProcesosPoliciales = $resource("@Href("~/api/ProcesosPoliciales")");
+                var AccionesPoliciales = $resource("@Href("~/api/AccionesPoliciales")");
+                var AccionesPolicialesSegunProcesoPolicialID = $resource("@Href("~/api/AccionesPoliciales/SegunProcesoPolicialID")");
+                var RegistrosPoliciales = $resource("@Href("~/api/RegistrosPoliciales")");
                 return {
                     "Ciudadanos": Ciudadanos,
-                    "Doctores": Doctores,
-                    "Hospitales": Hospitales,
-                    "Procesos": Procesos,
-                    "Acciones": Acciones,
-                    "AccionesSegunProcesoID": AccionesSegunProcesoID,
-                    "RegistroMedicos": RegistroMedicos
+                    "Policias": Policias,
+                    "Comisarias": Comisarias,
+                    "ProcesosPoliciales": ProcesosPoliciales,
+                    "AccionesPoliciales": AccionesPoliciales,
+                    "AccionesPolicialesSegunProcesoPolicialID": AccionesPolicialesSegunProcesoPolicialID,
+                    "RegistrosPoliciales": RegistrosPoliciales
                 }
             }
         })();
     </script>
 
     @*Controladores*@
-    <script src="~/Scripts/registroMedico/index/controllers/GestorMedicoCtrl.js"></script>
-    <script src="~/Scripts/registroMedico/index/controllers/listadoRegistroMCtrl.js"></script>
-    <script src="~/Scripts/registroMedico/index/controllers/modal/modalCrearCiudadanoCtrl.js"></script>
+<script src="~/Scripts/registroPolicial/index/controllers/GestorPolicialCtrl.js"></script>
+<script src="~/Scripts/registroPolicial/index/controllers/listadoRegistroPCtrl.js"></script>
+<script src="~/Scripts/registroPolicial/index/controllers/modal/modalCrearCiudadanoCtrl.js"></script>
+  
 }
+<div class="container" ng-app="GestorPolicialApp">
+
 <div class="container" style="margin-top:20px;">
     <div class="row">
         <div class="col-md-5">
             <div class="panel panel-primary">
                 <div class="panel-heading">Registro</div>
                 <div class="panel-body">
-                    @Html.Partial("Index/_FormRegistroMedico")
+                    @Html.Partial("Index/_FormRegistroPolicial")
                 </div>
             </div>
         </div>
         <div class="col-md-7">
-            @Html.Partial("Index/_ListadoRegistroM")
+            @Html.Partial("Index/_ListadoRegistroP")
         </div>
     </div>
 </div>
@@ -80,4 +83,5 @@
         <button class="btn btn-primary" ng-click="ok()" id="btn_save">Eliminar</button>
     </div>
 </script>
+</div>
 

@@ -12,7 +12,7 @@ namespace SNRegistros.Dominio.Managers
     {
         public List<HospitaleDto> Listado()
         {
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 var listado = context.Hospitales
                     .Select(s => new HospitaleDto()

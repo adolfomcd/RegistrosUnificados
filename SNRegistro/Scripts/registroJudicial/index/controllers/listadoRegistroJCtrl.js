@@ -1,46 +1,22 @@
-﻿//(function () {
-//    'use strict';
-
-//    angular
-//        .module('GestorMedicoApp')
-//        .controller('listadoRegistroMCtrl', listadoRegistroMCtrl);
-
-//    listadoRegistroMCtrl.$inject = ['$rootScope', 'GestorMedicoResourse'];
-
-//    function listadoRegistroMCtrl($rootScope, GestorMedicoResource) {
-//        /* jshint validthis:true */
-//        var vm = this;
-//        vm.RegistroMedicos = GestorMedicoResource.RegistroMedicos.query();
-//        vm.actualizar = function (RegistroMedicos) {
-//            $rootScope.$broadcast('actualizarRegistrosMedicos', RegistroMedicos);
-//        }
-//        //Escuchando eventos de otros controladores
-//        $rootScope.$on("actualizarListadoMedico", function (event, objetoRecibido) {
-//            vm.RegistroMedicos = GestorMedicoResource.RegistroMedicos.query();
-//        });
-
-//    }
-
-//})();
-(function () {
+﻿(function () {
     'use strict';
 
     angular
-        .module('GestorMedicoApp')
-        .controller('listadoRegistroMCtrl', listadoRegistroMCtrl);
+        .module('GestorJudicialApp')
+        .controller('listadoRegistroJCtrl', listadoRegistroJCtrl);
 
-    listadoRegistroMCtrl.$inject = ['$rootScope', 'GestorMedicoResourse'];
+    listadoRegistroJCtrl.$inject = ['$rootScope', 'GestorJudicialResourse'];
 
-    function listadoRegistroMCtrl($rootScope, GestorMedicoResource) {
+    function listadoRegistroJCtrl($rootScope, GestorJudicialResource) {
         /* jshint validthis:true */
         var vm = this;
-        traerRegistroMedicos();
-        vm.actualizar = function (RegistroMedicos) {
-            $rootScope.$broadcast('actualizarRegistrosMedicos', RegistroMedicos);
+        traerRegistroJudicial();
+        vm.actualizar = function (RegistroJudicial) {
+            $rootScope.$broadcast('actualizarRegistroJudicial', RegistroJudicial);
         }
         //Escuchando eventos de otros controladores
-        $rootScope.$on("actualizarListadoMedico", function (event, objetoRecibido) {
-            vm.RegistroMedicos = GestorMedicoResource.RegistroMedicos.query();
+        $rootScope.$on("actualizarListadoJudicial", function (event, objetoRecibido) {
+            vm.RegistroJudicial = GestorJudicialResource.RegistroJudicial.query();
         });
 
         ////Menu
@@ -49,14 +25,14 @@
             ocultar();
             vm.menu.listado.class = "active";
             vm.menu.listado.mostrar = true;
-            traerRegistroMedicos();
+            traerRegistroJudicial();
             vm.pestanaSeleccionada = "listado";
         }
         vm.busquedaFn = function () {
             ocultar();
             vm.menu.busqueda.class = "active";
             vm.menu.busqueda.mostrar = true;
-            vm.RegistroMedicos = {};
+            vm.RegistroJudicial = {};
             vm.pestanaSeleccionada = "busqueda";
         }
         //////
@@ -64,8 +40,8 @@
             vm.menu.listado = {};
             vm.menu.busqueda = {};
         }
-        function traerRegistroMedicos() {
-            vm.RegistroMedicos = GestorMedicoResource.RegistroMedicos.query();
+        function traerRegistroJudicial() {
+            vm.RegistroJudicial = GestorJudicialResource.RegistroJudicial.query();
         }
         ////
         vm.listadoFn();

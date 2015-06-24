@@ -40,6 +40,9 @@
 
         }
         //Eventos de usuario
+        vm.nuevoParaCargar = function () {
+            vm.GestorMedico = {};
+        }
         vm.guardar = function () {
             GestorMedicoResourse.RegistroMedicos.save(vm.GestorMedico)
             .$promise.then(function (respuesta) {
@@ -67,5 +70,12 @@
                 //$log.info('Modal dismissed at: ' + new Date());
             });
         }
+        //Captura de broadcast
+        $rootScope.$on("actualizarRegistroMedico", function (event, objetoRecibido) {
+            vm.GestorMedico = objetoRecibido;
+            vm.GestorMedico.Proceso = vm.GestorMedico.Accione.Proceso;
+            refrescarCampoSelect("GestorMedico", vm.Procesos, "Proceso", "ProcesoID");
+            //refrescarCampoSelect("GestorMedico", vm.Acciones, "Accione", "AccionID");
+        });
     }
 })();

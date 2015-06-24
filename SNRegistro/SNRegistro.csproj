@@ -172,11 +172,21 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\AccionesController.cs" />
+    <Compile Include="Controllers\Api\AccionesJudicialesController.cs" />
+    <Compile Include="Controllers\Api\AccionesPolicialesController.cs" />
     <Compile Include="Controllers\Api\CiudadanosController.cs" />
+    <Compile Include="Controllers\Api\ComisariasController.cs" />
     <Compile Include="Controllers\Api\DoctoresController.cs" />
+    <Compile Include="Controllers\Api\FuncionariosJudicialesController.cs" />
     <Compile Include="Controllers\Api\HospitalesController.cs" />
+    <Compile Include="Controllers\Api\JuzgadosController.cs" />
+    <Compile Include="Controllers\Api\PoliciasController.cs" />
     <Compile Include="Controllers\Api\ProcesosController.cs" />
+    <Compile Include="Controllers\Api\ProcesosJudicialesController.cs" />
+    <Compile Include="Controllers\Api\ProcesosPolicialesController.cs" />
+    <Compile Include="Controllers\Api\RegistrosJudicialesController.cs" />
     <Compile Include="Controllers\Api\RegistrosMedicosController.cs" />
+    <Compile Include="Controllers\Api\RegistrosPolicialesController.cs" />
     <Compile Include="Controllers\CiudadanoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -195,6 +205,8 @@
   <ItemGroup>
     <Content Include="bin\SNRegistro.dll" />
     <Content Include="bin\SNRegistro.pdb" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
@@ -202,6 +214,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Icon.png" />
+    <Content Include="imagenes\19749758-gray-background-with-oriental-decorations-Stock-Vector-pattern.jpg" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -246,6 +260,12 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -998,6 +1018,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\registroJudicial\index\controllers\busquedaCtrl.js" />
     <Content Include="Scripts\registroJudicial\index\controllers\GestorJudicialCtrl.js" />
     <Content Include="Scripts\registroJudicial\index\controllers\listadoRegistroJCtrl.js" />
     <Content Include="Scripts\registroJudicial\index\controllers\modal\modalCrearCiudadanoCtrl.js" />
@@ -1007,11 +1029,11 @@
     <Content Include="Scripts\registroMedico\index\controllers\listadoRegistroMCtrl.js" />
     <Content Include="Scripts\registroMedico\index\controllers\modal\modalCrearCiudadanoCtrl.js" />
     <Content Include="Scripts\registroMedico\index\services\common.services.js" />
+    <Content Include="Scripts\registroPolicial\index\controllers\busquedaCtrl.js" />
     <Content Include="Scripts\registroPolicial\index\controllers\GestorPolicialCtrl.js" />
-    <Content Include="Scripts\registroPolicial\index\controllers\listadoRegistroJCtrl.js" />
+    <Content Include="Scripts\registroPolicial\index\controllers\listadoRegistroPCtrl.js" />
     <Content Include="Scripts\registroPolicial\index\controllers\modal\modalCrearCiudadanoCtrl.js" />
     <Content Include="Scripts\registroPolicial\index\services\common.services.js" />
-    <Content Include="Scripts\registroPolicial\services\common.services.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -1070,20 +1092,20 @@
     <Content Include="Views\RegistroJudicial\Index.cshtml" />
     <Content Include="Views\RegistroJudicial\Index\modal\_FormModalCrearCiudadano.cshtml" />
     <Content Include="Views\RegistroPolicial\Index\modal\_FormModalCrearCiudadano.cshtml" />
-    <Content Include="Views\RegistroJudicial\Index\_ListadoRegistroM.cshtml" />
-    <Content Include="Views\RegistroJudicial\Index\_FormRegistroMedico.cshtml" />
-    <Content Include="Views\RegistroPolicial\Index\_ListadoRegistroM.cshtml" />
-    <Content Include="Views\RegistroPolicial\Index\_FormRegistroMedico.cshtml" />
+    <Content Include="Views\RegistroJudicial\Index\_ListadoRegistroJ.cshtml" />
+    <Content Include="Views\RegistroJudicial\Index\_FormRegistroJudicial.cshtml" />
+    <Content Include="Views\RegistroPolicial\Index\_ListadoRegistroP.cshtml" />
+    <Content Include="Views\RegistroPolicial\Index\_FormRegistroPolicial.cshtml" />
     <Content Include="Views\RegistroMedico\Index\_FormBusqueda.cshtml" />
+    <Content Include="Views\RegistroJudicial\Index\_FormBusqueda.cshtml" />
+    <Content Include="Views\RegistroPolicial\Index\_FormBusqueda.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\FuncionariosJudiciales\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SNRegistros.Aplicacion.Dto\SNRegistros.Aplicacion.Dto.csproj">
@@ -1091,7 +1113,7 @@
       <Name>SNRegistros.Aplicacion.Dto</Name>
     </ProjectReference>
     <ProjectReference Include="..\SNRegistros.Dominio.DB\SNRegistros.Dominio.DB.csproj">
-      <Project>{ee88a472-59b7-463a-9238-d59b654590d5}</Project>
+      <Project>{0819221b-4631-4717-a63a-fbfd7157e2e6}</Project>
       <Name>SNRegistros.Dominio.DB</Name>
     </ProjectReference>
     <ProjectReference Include="..\SNRegistros.Dominio.Managers\SNRegistros.Dominio.Managers.csproj">

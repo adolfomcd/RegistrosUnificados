@@ -13,7 +13,7 @@ namespace SNRegistros.Dominio.Managers
     {
         public List<AccioneDto> ListadoAcciones()
         {
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 var listado = context.Acciones
                     .Select(s => new AccioneDto()
@@ -27,7 +27,7 @@ namespace SNRegistros.Dominio.Managers
         }
         public List<AccioneDto> ListadoAcciones(int ProcesoID)
         {
-            using (var context = new SNRegistroModel())
+            using (var context = new SNRegistroEntities())
             {
                 var listado = context.Acciones
                     .Where(t => t.ProcesoID == ProcesoID)

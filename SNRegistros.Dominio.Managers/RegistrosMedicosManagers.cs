@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace SNRegistros.Dominio.Managers {
     public class RegistrosMedicosManagers {
         public List<RegistroMedicoDto> ListadoRegistroMedico() {
-            using (var context = new SNRegistroModel()) {
+            using (var context = new SNRegistroEntities()) {
                 var listado = context.RegistrosMedicos
                     .Select(s => new RegistroMedicoDto() {
                         RegistroMedicoID = s.RegistroMedicoID,
@@ -45,7 +45,7 @@ namespace SNRegistros.Dominio.Managers {
             if (mDto.RegistroMedicoID > 0) {
                 return EditarMovimiento(mDto);
             }
-            using (var context = new SNRegistroModel()) {
+            using (var context = new SNRegistroEntities()) {
                 MensajeDto mensajeDto = null;
                 var RegistroMedicoDb = new RegistrosMedico();
                 RegistroMedicoDb.Ciudadanoid = mDto.Ciudadano.CiudadanoID;
@@ -53,6 +53,7 @@ namespace SNRegistros.Dominio.Managers {
                 RegistroMedicoDb.HospitalID = mDto.Hospitale.HospitalID;
                 RegistroMedicoDb.AccionID = mDto.Accione.AccionID;
                 RegistroMedicoDb.Comentario = mDto.Comentario;
+                RegistroMedicoDb.Momento = DateTime.Now;
 
                 context.RegistrosMedicos.Add(RegistroMedicoDb);
                 mensajeDto = AgregarModificar.Hacer(context, mensajeDto);
@@ -68,7 +69,7 @@ namespace SNRegistros.Dominio.Managers {
         }
 
         private MensajeDto EditarMovimiento(RegistroMedicoDto mDto) {
-            using (var context = new SNRegistroModel()) {
+            using (var context = new SNRegistroEntities()) {
                 MensajeDto mensajeDto = null;
                 var movimientoDb = context.RegistrosMedicos
                     .Where(m => m.RegistroMedicoID == mDto.RegistroMedicoID)
@@ -93,7 +94,7 @@ namespace SNRegistros.Dominio.Managers {
         }
 
         public MensajeDto EliminarMovimiento(int id) {
-            using (var context = new SNRegistroModel()) {
+            using (var context = new SNRegistroEntities()) {
                 MensajeDto mensajeDto = null;
                 var movimientoDb = context.RegistrosMedicos
                     .Where(m => m.RegistroMedicoID == id)
@@ -111,7 +112,7 @@ namespace SNRegistros.Dominio.Managers {
         }
 
         public MensajeDto ListadoRegistroMedico(RegistroMedicoDto rDto) {
-            using (var context = new SNRegistroModel()) {
+            using (var context = new SNRegistroEntities()) {
                 var listado = context.RegistrosMedicos
                          .Select(s => new RegistroMedicoDto() {
                              RegistroMedicoID = s.RegistroMedicoID,
@@ -148,6 +149,27 @@ namespace SNRegistros.Dominio.Managers {
                     Error = false,
                     MensajeDelProceso = "Listado generado: " ,
                     ObjetoDto = listado.ToList()                    
+                };
+            }
+        }
+
+        public MensajeDto EliminarRegistroMedico(int id)
+        {
+            using (var context = new SNRegistroEntities())
+            {
+                MensajeDto mensajeDto = null;
+                var registroMedicoDb = context.RegistrosMedicos
+                    .Where(s => s.RegistroMedicoID == id)
+                    .First();
+
+                context.RegistrosMedicos.Remove(registroMedicoDb);
+                mensajeDto = AgregarModificar.Hacer(context, mensajeDto);
+                if (mensajeDto != null) { return mensajeDto; }
+
+                return new MensajeDto()
+                {
+                    Error = false,
+                    MensajeDelProceso = "Se elimino el registro medico : " + id
                 };
             }
         }

@@ -1,0 +1,1448 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SNRegistroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Acciones">
+          <Key>
+            <PropertyRef Name="AccionID" />
+          </Key>
+          <Property Name="AccionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProcesoID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccionesJudiciales">
+          <Key>
+            <PropertyRef Name="AccJudID" />
+          </Key>
+          <Property Name="AccJudID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreAJ" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProcesoJudID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccionesPoliciales">
+          <Key>
+            <PropertyRef Name="AccPolID" />
+          </Key>
+          <Property Name="AccPolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreAP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProcesoPolicialID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ciudadades">
+          <Key>
+            <PropertyRef Name="CiudadID" />
+          </Key>
+          <Property Name="CiudadID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DepartamentoID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ciudadanos">
+          <Key>
+            <PropertyRef Name="CiudadanoID" />
+          </Key>
+          <Property Name="CiudadanoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comisarias">
+          <Key>
+            <PropertyRef Name="ComisariaID" />
+          </Key>
+          <Property Name="ComisariaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CiudadID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departamentos">
+          <Key>
+            <PropertyRef Name="DepartamentoID" />
+          </Key>
+          <Property Name="DepartamentoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Doctores">
+          <Key>
+            <PropertyRef Name="MedicoID" />
+          </Key>
+          <Property Name="MedicoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HospitalId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FuncionariosJudiciales">
+          <Key>
+            <PropertyRef Name="FuncJudicialId" />
+          </Key>
+          <Property Name="FuncJudicialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="JuzgadoID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hospitales">
+          <Key>
+            <PropertyRef Name="HospitalID" />
+          </Key>
+          <Property Name="HospitalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CiudadID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Juzgados">
+          <Key>
+            <PropertyRef Name="JuzgadoID" />
+          </Key>
+          <Property Name="JuzgadoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CiudadID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Policias">
+          <Key>
+            <PropertyRef Name="PoliciaID" />
+          </Key>
+          <Property Name="PoliciaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ComisariaID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Procesos">
+          <Key>
+            <PropertyRef Name="ProcesoID" />
+          </Key>
+          <Property Name="ProcesoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProcesosJudiciales">
+          <Key>
+            <PropertyRef Name="ProcesoJudID" />
+          </Key>
+          <Property Name="ProcesoJudID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreProcJud" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProcesosPoliciales">
+          <Key>
+            <PropertyRef Name="ProcesoPolicialID" />
+          </Key>
+          <Property Name="ProcesoPolicialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombrePP" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegistrosJudiciales">
+          <Key>
+            <PropertyRef Name="RegistroJudicialID" />
+          </Key>
+          <Property Name="RegistroJudicialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CiudadanoID" Type="int" Nullable="false" />
+          <Property Name="FuncJudicialId" Type="int" Nullable="false" />
+          <Property Name="JuzgadoID" Type="int" Nullable="false" />
+          <Property Name="AccJudID" Type="int" Nullable="false" />
+          <Property Name="Comentario" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegistrosMedicos">
+          <Key>
+            <PropertyRef Name="RegistroMedicoID" />
+          </Key>
+          <Property Name="RegistroMedicoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ciudadanoid" Type="int" Nullable="false" />
+          <Property Name="MedicoID" Type="int" Nullable="false" />
+          <Property Name="HospitalID" Type="int" Nullable="false" />
+          <Property Name="AccionID" Type="int" Nullable="false" />
+          <Property Name="Comentario" Type="varchar(max)" />
+          <Property Name="Momento" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="RegistrosPoliciales">
+          <Key>
+            <PropertyRef Name="RegistroPolicialID" />
+          </Key>
+          <Property Name="RegistroPolicialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CiudadanoID" Type="int" Nullable="false" />
+          <Property Name="PoliciaID" Type="int" Nullable="false" />
+          <Property Name="ComisariaID" Type="int" Nullable="false" />
+          <Property Name="AccPolID" Type="int" Nullable="false" />
+          <Property Name="Comentario" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Acciones_Procesos">
+          <End Role="Procesos" Type="Self.Procesos" Multiplicity="1" />
+          <End Role="Acciones" Type="Self.Acciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Procesos">
+              <PropertyRef Name="ProcesoID" />
+            </Principal>
+            <Dependent Role="Acciones">
+              <PropertyRef Name="ProcesoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccionesPoliciales_ProcesosJudiciales">
+          <End Role="ProcesosPoliciales" Type="Self.ProcesosPoliciales" Multiplicity="1" />
+          <End Role="AccionesPoliciales" Type="Self.AccionesPoliciales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcesosPoliciales">
+              <PropertyRef Name="ProcesoPolicialID" />
+            </Principal>
+            <Dependent Role="AccionesPoliciales">
+              <PropertyRef Name="ProcesoPolicialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccionJudicial_ProcesosJudiciales">
+          <End Role="ProcesosJudiciales" Type="Self.ProcesosJudiciales" Multiplicity="1" />
+          <End Role="AccionesJudiciales" Type="Self.AccionesJudiciales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcesosJudiciales">
+              <PropertyRef Name="ProcesoJudID" />
+            </Principal>
+            <Dependent Role="AccionesJudiciales">
+              <PropertyRef Name="ProcesoJudID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comisarias_Ciudadades">
+          <End Role="Ciudadades" Type="Self.Ciudadades" Multiplicity="1" />
+          <End Role="Comisarias" Type="Self.Comisarias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudadades">
+              <PropertyRef Name="CiudadID" />
+            </Principal>
+            <Dependent Role="Comisarias">
+              <PropertyRef Name="CiudadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hospitales_Ciudadades">
+          <End Role="Ciudadades" Type="Self.Ciudadades" Multiplicity="1" />
+          <End Role="Hospitales" Type="Self.Hospitales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudadades">
+              <PropertyRef Name="CiudadID" />
+            </Principal>
+            <Dependent Role="Hospitales">
+              <PropertyRef Name="CiudadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistroPolicial_AccionesPoliciales">
+          <End Role="AccionesPoliciales" Type="Self.AccionesPoliciales" Multiplicity="1" />
+          <End Role="RegistrosPoliciales" Type="Self.RegistrosPoliciales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccionesPoliciales">
+              <PropertyRef Name="AccPolID" />
+            </Principal>
+            <Dependent Role="RegistrosPoliciales">
+              <PropertyRef Name="AccPolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistroPolicial_Ciudadanos">
+          <End Role="Ciudadanos" Type="Self.Ciudadanos" Multiplicity="1" />
+          <End Role="RegistrosPoliciales" Type="Self.RegistrosPoliciales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudadanos">
+              <PropertyRef Name="CiudadanoID" />
+            </Principal>
+            <Dependent Role="RegistrosPoliciales">
+              <PropertyRef Name="CiudadanoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistroPolicial_Comisarias">
+          <End Role="Comisarias" Type="Self.Comisarias" Multiplicity="1" />
+          <End Role="RegistrosPoliciales" Type="Self.RegistrosPoliciales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comisarias">
+              <PropertyRef Name="ComisariaID" />
+            </Principal>
+            <Dependent Role="RegistrosPoliciales">
+              <PropertyRef Name="ComisariaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistroPolicial_Policias">
+          <End Role="Policias" Type="Self.Policias" Multiplicity="1" />
+          <End Role="RegistrosPoliciales" Type="Self.RegistrosPoliciales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Policias">
+              <PropertyRef Name="PoliciaID" />
+            </Principal>
+            <Dependent Role="RegistrosPoliciales">
+              <PropertyRef Name="PoliciaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrosJudiciales_AccionJudicial">
+          <End Role="AccionesJudiciales" Type="Self.AccionesJudiciales" Multiplicity="1" />
+          <End Role="RegistrosJudiciales" Type="Self.RegistrosJudiciales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccionesJudiciales">
+              <PropertyRef Name="AccJudID" />
+            </Principal>
+            <Dependent Role="RegistrosJudiciales">
+              <PropertyRef Name="AccJudID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrosJudiciales_Ciudadanos">
+          <End Role="Ciudadanos" Type="Self.Ciudadanos" Multiplicity="1" />
+          <End Role="RegistrosJudiciales" Type="Self.RegistrosJudiciales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudadanos">
+              <PropertyRef Name="CiudadanoID" />
+            </Principal>
+            <Dependent Role="RegistrosJudiciales">
+              <PropertyRef Name="CiudadanoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrosJudiciales_FuncionarioJudicial">
+          <End Role="FuncionariosJudiciales" Type="Self.FuncionariosJudiciales" Multiplicity="1" />
+          <End Role="RegistrosJudiciales" Type="Self.RegistrosJudiciales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuncionariosJudiciales">
+              <PropertyRef Name="FuncJudicialId" />
+            </Principal>
+            <Dependent Role="RegistrosJudiciales">
+              <PropertyRef Name="FuncJudicialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrosJudiciales_Juzgados">
+          <End Role="Juzgados" Type="Self.Juzgados" Multiplicity="1" />
+          <End Role="RegistrosJudiciales" Type="Self.RegistrosJudiciales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Juzgados">
+              <PropertyRef Name="JuzgadoID" />
+            </Principal>
+            <Dependent Role="RegistrosJudiciales">
+              <PropertyRef Name="JuzgadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrosMedicos_Acciones">
+          <End Role="Acciones" Type="Self.Acciones" Multiplicity="1" />
+          <End Role="RegistrosMedicos" Type="Self.RegistrosMedicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acciones">
+              <PropertyRef Name="AccionID" />
+            </Principal>
+            <Dependent Role="RegistrosMedicos">
+              <PropertyRef Name="AccionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrosMedicos_Ciudadanos">
+          <End Role="Ciudadanos" Type="Self.Ciudadanos" Multiplicity="1" />
+          <End Role="RegistrosMedicos" Type="Self.RegistrosMedicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudadanos">
+              <PropertyRef Name="CiudadanoID" />
+            </Principal>
+            <Dependent Role="RegistrosMedicos">
+              <PropertyRef Name="Ciudadanoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrosMedicos_Doctores">
+          <End Role="Doctores" Type="Self.Doctores" Multiplicity="1" />
+          <End Role="RegistrosMedicos" Type="Self.RegistrosMedicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctores">
+              <PropertyRef Name="MedicoID" />
+            </Principal>
+            <Dependent Role="RegistrosMedicos">
+              <PropertyRef Name="MedicoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrosMedicos_Hospitales">
+          <End Role="Hospitales" Type="Self.Hospitales" Multiplicity="1" />
+          <End Role="RegistrosMedicos" Type="Self.RegistrosMedicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospitales">
+              <PropertyRef Name="HospitalID" />
+            </Principal>
+            <Dependent Role="RegistrosMedicos">
+              <PropertyRef Name="HospitalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SNRegistroModelStoreContainer">
+          <EntitySet Name="Acciones" EntityType="Self.Acciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccionesJudiciales" EntityType="Self.AccionesJudiciales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccionesPoliciales" EntityType="Self.AccionesPoliciales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ciudadades" EntityType="Self.Ciudadades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ciudadanos" EntityType="Self.Ciudadanos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comisarias" EntityType="Self.Comisarias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctores" EntityType="Self.Doctores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuncionariosJudiciales" EntityType="Self.FuncionariosJudiciales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hospitales" EntityType="Self.Hospitales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Juzgados" EntityType="Self.Juzgados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Policias" EntityType="Self.Policias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Procesos" EntityType="Self.Procesos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcesosJudiciales" EntityType="Self.ProcesosJudiciales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcesosPoliciales" EntityType="Self.ProcesosPoliciales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistrosJudiciales" EntityType="Self.RegistrosJudiciales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistrosMedicos" EntityType="Self.RegistrosMedicos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistrosPoliciales" EntityType="Self.RegistrosPoliciales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Acciones_Procesos" Association="Self.FK_Acciones_Procesos">
+            <End Role="Procesos" EntitySet="Procesos" />
+            <End Role="Acciones" EntitySet="Acciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccionesPoliciales_ProcesosJudiciales" Association="Self.FK_AccionesPoliciales_ProcesosJudiciales">
+            <End Role="ProcesosPoliciales" EntitySet="ProcesosPoliciales" />
+            <End Role="AccionesPoliciales" EntitySet="AccionesPoliciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccionJudicial_ProcesosJudiciales" Association="Self.FK_AccionJudicial_ProcesosJudiciales">
+            <End Role="ProcesosJudiciales" EntitySet="ProcesosJudiciales" />
+            <End Role="AccionesJudiciales" EntitySet="AccionesJudiciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comisarias_Ciudadades" Association="Self.FK_Comisarias_Ciudadades">
+            <End Role="Ciudadades" EntitySet="Ciudadades" />
+            <End Role="Comisarias" EntitySet="Comisarias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hospitales_Ciudadades" Association="Self.FK_Hospitales_Ciudadades">
+            <End Role="Ciudadades" EntitySet="Ciudadades" />
+            <End Role="Hospitales" EntitySet="Hospitales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistroPolicial_AccionesPoliciales" Association="Self.FK_RegistroPolicial_AccionesPoliciales">
+            <End Role="AccionesPoliciales" EntitySet="AccionesPoliciales" />
+            <End Role="RegistrosPoliciales" EntitySet="RegistrosPoliciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistroPolicial_Ciudadanos" Association="Self.FK_RegistroPolicial_Ciudadanos">
+            <End Role="Ciudadanos" EntitySet="Ciudadanos" />
+            <End Role="RegistrosPoliciales" EntitySet="RegistrosPoliciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistroPolicial_Comisarias" Association="Self.FK_RegistroPolicial_Comisarias">
+            <End Role="Comisarias" EntitySet="Comisarias" />
+            <End Role="RegistrosPoliciales" EntitySet="RegistrosPoliciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistroPolicial_Policias" Association="Self.FK_RegistroPolicial_Policias">
+            <End Role="Policias" EntitySet="Policias" />
+            <End Role="RegistrosPoliciales" EntitySet="RegistrosPoliciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrosJudiciales_AccionJudicial" Association="Self.FK_RegistrosJudiciales_AccionJudicial">
+            <End Role="AccionesJudiciales" EntitySet="AccionesJudiciales" />
+            <End Role="RegistrosJudiciales" EntitySet="RegistrosJudiciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrosJudiciales_Ciudadanos" Association="Self.FK_RegistrosJudiciales_Ciudadanos">
+            <End Role="Ciudadanos" EntitySet="Ciudadanos" />
+            <End Role="RegistrosJudiciales" EntitySet="RegistrosJudiciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrosJudiciales_FuncionarioJudicial" Association="Self.FK_RegistrosJudiciales_FuncionarioJudicial">
+            <End Role="FuncionariosJudiciales" EntitySet="FuncionariosJudiciales" />
+            <End Role="RegistrosJudiciales" EntitySet="RegistrosJudiciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrosJudiciales_Juzgados" Association="Self.FK_RegistrosJudiciales_Juzgados">
+            <End Role="Juzgados" EntitySet="Juzgados" />
+            <End Role="RegistrosJudiciales" EntitySet="RegistrosJudiciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrosMedicos_Acciones" Association="Self.FK_RegistrosMedicos_Acciones">
+            <End Role="Acciones" EntitySet="Acciones" />
+            <End Role="RegistrosMedicos" EntitySet="RegistrosMedicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrosMedicos_Ciudadanos" Association="Self.FK_RegistrosMedicos_Ciudadanos">
+            <End Role="Ciudadanos" EntitySet="Ciudadanos" />
+            <End Role="RegistrosMedicos" EntitySet="RegistrosMedicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrosMedicos_Doctores" Association="Self.FK_RegistrosMedicos_Doctores">
+            <End Role="Doctores" EntitySet="Doctores" />
+            <End Role="RegistrosMedicos" EntitySet="RegistrosMedicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrosMedicos_Hospitales" Association="Self.FK_RegistrosMedicos_Hospitales">
+            <End Role="Hospitales" EntitySet="Hospitales" />
+            <End Role="RegistrosMedicos" EntitySet="RegistrosMedicos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SNRegistroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Accione">
+          <Key>
+            <PropertyRef Name="AccionID" />
+          </Key>
+          <Property Name="AccionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProcesoID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Proceso" Relationship="Self.FK_Acciones_Procesos" FromRole="Acciones" ToRole="Procesos" />
+          <NavigationProperty Name="RegistrosMedicos" Relationship="Self.FK_RegistrosMedicos_Acciones" FromRole="Acciones" ToRole="RegistrosMedicos" />
+        </EntityType>
+        <EntityType Name="AccionesJudiciale">
+          <Key>
+            <PropertyRef Name="AccJudID" />
+          </Key>
+          <Property Name="AccJudID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreAJ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProcesoJudID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProcesosJudiciale" Relationship="Self.FK_AccionJudicial_ProcesosJudiciales" FromRole="AccionesJudiciales" ToRole="ProcesosJudiciales" />
+          <NavigationProperty Name="RegistrosJudiciales" Relationship="Self.FK_RegistrosJudiciales_AccionJudicial" FromRole="AccionesJudiciales" ToRole="RegistrosJudiciales" />
+        </EntityType>
+        <EntityType Name="AccionesPoliciale">
+          <Key>
+            <PropertyRef Name="AccPolID" />
+          </Key>
+          <Property Name="AccPolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreAP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProcesoPolicialID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProcesosPoliciale" Relationship="Self.FK_AccionesPoliciales_ProcesosJudiciales" FromRole="AccionesPoliciales" ToRole="ProcesosPoliciales" />
+          <NavigationProperty Name="RegistrosPoliciales" Relationship="Self.FK_RegistroPolicial_AccionesPoliciales" FromRole="AccionesPoliciales" ToRole="RegistrosPoliciales" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Ciudadade">
+          <Key>
+            <PropertyRef Name="CiudadID" />
+          </Key>
+          <Property Name="CiudadID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DepartamentoID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Comisarias" Relationship="Self.FK_Comisarias_Ciudadades" FromRole="Ciudadades" ToRole="Comisarias" />
+          <NavigationProperty Name="Hospitales" Relationship="Self.FK_Hospitales_Ciudadades" FromRole="Ciudadades" ToRole="Hospitales" />
+        </EntityType>
+        <EntityType Name="Ciudadano">
+          <Key>
+            <PropertyRef Name="CiudadanoID" />
+          </Key>
+          <Property Name="CiudadanoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="RegistrosPoliciales" Relationship="Self.FK_RegistroPolicial_Ciudadanos" FromRole="Ciudadanos" ToRole="RegistrosPoliciales" />
+          <NavigationProperty Name="RegistrosJudiciales" Relationship="Self.FK_RegistrosJudiciales_Ciudadanos" FromRole="Ciudadanos" ToRole="RegistrosJudiciales" />
+          <NavigationProperty Name="RegistrosMedicos" Relationship="Self.FK_RegistrosMedicos_Ciudadanos" FromRole="Ciudadanos" ToRole="RegistrosMedicos" />
+        </EntityType>
+        <EntityType Name="Comisaria">
+          <Key>
+            <PropertyRef Name="ComisariaID" />
+          </Key>
+          <Property Name="ComisariaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CiudadID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ciudadade" Relationship="Self.FK_Comisarias_Ciudadades" FromRole="Comisarias" ToRole="Ciudadades" />
+          <NavigationProperty Name="RegistrosPoliciales" Relationship="Self.FK_RegistroPolicial_Comisarias" FromRole="Comisarias" ToRole="RegistrosPoliciales" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="DepartamentoID" />
+          </Key>
+          <Property Name="DepartamentoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Doctore">
+          <Key>
+            <PropertyRef Name="MedicoID" />
+          </Key>
+          <Property Name="MedicoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HospitalId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RegistrosMedicos" Relationship="Self.FK_RegistrosMedicos_Doctores" FromRole="Doctores" ToRole="RegistrosMedicos" />
+        </EntityType>
+        <EntityType Name="FuncionariosJudiciale">
+          <Key>
+            <PropertyRef Name="FuncJudicialId" />
+          </Key>
+          <Property Name="FuncJudicialId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JuzgadoID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RegistrosJudiciales" Relationship="Self.FK_RegistrosJudiciales_FuncionarioJudicial" FromRole="FuncionariosJudiciales" ToRole="RegistrosJudiciales" />
+        </EntityType>
+        <EntityType Name="Hospitale">
+          <Key>
+            <PropertyRef Name="HospitalID" />
+          </Key>
+          <Property Name="HospitalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CiudadID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ciudadade" Relationship="Self.FK_Hospitales_Ciudadades" FromRole="Hospitales" ToRole="Ciudadades" />
+          <NavigationProperty Name="RegistrosMedicos" Relationship="Self.FK_RegistrosMedicos_Hospitales" FromRole="Hospitales" ToRole="RegistrosMedicos" />
+        </EntityType>
+        <EntityType Name="Juzgado">
+          <Key>
+            <PropertyRef Name="JuzgadoID" />
+          </Key>
+          <Property Name="JuzgadoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CiudadID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RegistrosJudiciales" Relationship="Self.FK_RegistrosJudiciales_Juzgados" FromRole="Juzgados" ToRole="RegistrosJudiciales" />
+        </EntityType>
+        <EntityType Name="Policia">
+          <Key>
+            <PropertyRef Name="PoliciaID" />
+          </Key>
+          <Property Name="PoliciaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ComisariaID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RegistrosPoliciales" Relationship="Self.FK_RegistroPolicial_Policias" FromRole="Policias" ToRole="RegistrosPoliciales" />
+        </EntityType>
+        <EntityType Name="Proceso">
+          <Key>
+            <PropertyRef Name="ProcesoID" />
+          </Key>
+          <Property Name="ProcesoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Acciones" Relationship="Self.FK_Acciones_Procesos" FromRole="Procesos" ToRole="Acciones" />
+        </EntityType>
+        <EntityType Name="ProcesosJudiciale">
+          <Key>
+            <PropertyRef Name="ProcesoJudID" />
+          </Key>
+          <Property Name="ProcesoJudID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreProcJud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AccionesJudiciales" Relationship="Self.FK_AccionJudicial_ProcesosJudiciales" FromRole="ProcesosJudiciales" ToRole="AccionesJudiciales" />
+        </EntityType>
+        <EntityType Name="ProcesosPoliciale">
+          <Key>
+            <PropertyRef Name="ProcesoPolicialID" />
+          </Key>
+          <Property Name="ProcesoPolicialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombrePP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AccionesPoliciales" Relationship="Self.FK_AccionesPoliciales_ProcesosJudiciales" FromRole="ProcesosPoliciales" ToRole="AccionesPoliciales" />
+        </EntityType>
+        <EntityType Name="RegistrosJudiciale">
+          <Key>
+            <PropertyRef Name="RegistroJudicialID" />
+          </Key>
+          <Property Name="RegistroJudicialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CiudadanoID" Type="Int32" Nullable="false" />
+          <Property Name="FuncJudicialId" Type="Int32" Nullable="false" />
+          <Property Name="JuzgadoID" Type="Int32" Nullable="false" />
+          <Property Name="AccJudID" Type="Int32" Nullable="false" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AccionesJudiciale" Relationship="Self.FK_RegistrosJudiciales_AccionJudicial" FromRole="RegistrosJudiciales" ToRole="AccionesJudiciales" />
+          <NavigationProperty Name="Ciudadano" Relationship="Self.FK_RegistrosJudiciales_Ciudadanos" FromRole="RegistrosJudiciales" ToRole="Ciudadanos" />
+          <NavigationProperty Name="FuncionariosJudiciale" Relationship="Self.FK_RegistrosJudiciales_FuncionarioJudicial" FromRole="RegistrosJudiciales" ToRole="FuncionariosJudiciales" />
+          <NavigationProperty Name="Juzgado" Relationship="Self.FK_RegistrosJudiciales_Juzgados" FromRole="RegistrosJudiciales" ToRole="Juzgados" />
+        </EntityType>
+        <EntityType Name="RegistrosMedico">
+          <Key>
+            <PropertyRef Name="RegistroMedicoID" />
+          </Key>
+          <Property Name="RegistroMedicoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ciudadanoid" Type="Int32" Nullable="false" />
+          <Property Name="MedicoID" Type="Int32" Nullable="false" />
+          <Property Name="HospitalID" Type="Int32" Nullable="false" />
+          <Property Name="AccionID" Type="Int32" Nullable="false" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Momento" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Accione" Relationship="Self.FK_RegistrosMedicos_Acciones" FromRole="RegistrosMedicos" ToRole="Acciones" />
+          <NavigationProperty Name="Ciudadano" Relationship="Self.FK_RegistrosMedicos_Ciudadanos" FromRole="RegistrosMedicos" ToRole="Ciudadanos" />
+          <NavigationProperty Name="Doctore" Relationship="Self.FK_RegistrosMedicos_Doctores" FromRole="RegistrosMedicos" ToRole="Doctores" />
+          <NavigationProperty Name="Hospitale" Relationship="Self.FK_RegistrosMedicos_Hospitales" FromRole="RegistrosMedicos" ToRole="Hospitales" />
+        </EntityType>
+        <EntityType Name="RegistrosPoliciale">
+          <Key>
+            <PropertyRef Name="RegistroPolicialID" />
+          </Key>
+          <Property Name="RegistroPolicialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CiudadanoID" Type="Int32" Nullable="false" />
+          <Property Name="PoliciaID" Type="Int32" Nullable="false" />
+          <Property Name="ComisariaID" Type="Int32" Nullable="false" />
+          <Property Name="AccPolID" Type="Int32" Nullable="false" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AccionesPoliciale" Relationship="Self.FK_RegistroPolicial_AccionesPoliciales" FromRole="RegistrosPoliciales" ToRole="AccionesPoliciales" />
+          <NavigationProperty Name="Ciudadano" Relationship="Self.FK_RegistroPolicial_Ciudadanos" FromRole="RegistrosPoliciales" ToRole="Ciudadanos" />
+          <NavigationProperty Name="Comisaria" Relationship="Self.FK_RegistroPolicial_Comisarias" FromRole="RegistrosPoliciales" ToRole="Comisarias" />
+          <NavigationProperty Name="Policia" Relationship="Self.FK_RegistroPolicial_Policias" FromRole="RegistrosPoliciales" ToRole="Policias" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Acciones_Procesos">
+          <End Role="Procesos" Type="Self.Proceso" Multiplicity="1" />
+          <End Role="Acciones" Type="Self.Accione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Procesos">
+              <PropertyRef Name="ProcesoID" />
+            </Principal>
+            <Dependent Role="Acciones">
+              <PropertyRef Name="ProcesoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrosMedicos_Acciones">
+          <End Role="Acciones" Type="Self.Accione" Multiplicity="1" />
+          <End Role="RegistrosMedicos" Type="Self.RegistrosMedico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acciones">
+              <PropertyRef Name="AccionID" />
+            </Principal>
+            <Dependent Role="RegistrosMedicos">
+              <PropertyRef Name="AccionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccionJudicial_ProcesosJudiciales">
+          <End Role="ProcesosJudiciales" Type="Self.ProcesosJudiciale" Multiplicity="1" />
+          <End Role="AccionesJudiciales" Type="Self.AccionesJudiciale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcesosJudiciales">
+              <PropertyRef Name="ProcesoJudID" />
+            </Principal>
+            <Dependent Role="AccionesJudiciales">
+              <PropertyRef Name="ProcesoJudID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrosJudiciales_AccionJudicial">
+          <End Role="AccionesJudiciales" Type="Self.AccionesJudiciale" Multiplicity="1" />
+          <End Role="RegistrosJudiciales" Type="Self.RegistrosJudiciale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccionesJudiciales">
+              <PropertyRef Name="AccJudID" />
+            </Principal>
+            <Dependent Role="RegistrosJudiciales">
+              <PropertyRef Name="AccJudID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccionesPoliciales_ProcesosJudiciales">
+          <End Role="ProcesosPoliciales" Type="Self.ProcesosPoliciale" Multiplicity="1" />
+          <End Role="AccionesPoliciales" Type="Self.AccionesPoliciale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcesosPoliciales">
+              <PropertyRef Name="ProcesoPolicialID" />
+            </Principal>
+            <Dependent Role="AccionesPoliciales">
+              <PropertyRef Name="ProcesoPolicialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistroPolicial_AccionesPoliciales">
+          <End Role="AccionesPoliciales" Type="Self.AccionesPoliciale" Multiplicity="1" />
+          <End Role="RegistrosPoliciales" Type="Self.RegistrosPoliciale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccionesPoliciales">
+              <PropertyRef Name="AccPolID" />
+            </Principal>
+            <Dependent Role="RegistrosPoliciales">
+              <PropertyRef Name="AccPolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comisarias_Ciudadades">
+          <End Role="Ciudadades" Type="Self.Ciudadade" Multiplicity="1" />
+          <End Role="Comisarias" Type="Self.Comisaria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudadades">
+              <PropertyRef Name="CiudadID" />
+            </Principal>
+            <Dependent Role="Comisarias">
+              <PropertyRef Name="CiudadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hospitales_Ciudadades">
+          <End Role="Ciudadades" Type="Self.Ciudadade" Multiplicity="1" />
+          <End Role="Hospitales" Type="Self.Hospitale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudadades">
+              <PropertyRef Name="CiudadID" />
+            </Principal>
+            <Dependent Role="Hospitales">
+              <PropertyRef Name="CiudadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistroPolicial_Ciudadanos">
+          <End Role="Ciudadanos" Type="Self.Ciudadano" Multiplicity="1" />
+          <End Role="RegistrosPoliciales" Type="Self.RegistrosPoliciale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudadanos">
+              <PropertyRef Name="CiudadanoID" />
+            </Principal>
+            <Dependent Role="RegistrosPoliciales">
+              <PropertyRef Name="CiudadanoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrosJudiciales_Ciudadanos">
+          <End Role="Ciudadanos" Type="Self.Ciudadano" Multiplicity="1" />
+          <End Role="RegistrosJudiciales" Type="Self.RegistrosJudiciale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudadanos">
+              <PropertyRef Name="CiudadanoID" />
+            </Principal>
+            <Dependent Role="RegistrosJudiciales">
+              <PropertyRef Name="CiudadanoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrosMedicos_Ciudadanos">
+          <End Role="Ciudadanos" Type="Self.Ciudadano" Multiplicity="1" />
+          <End Role="RegistrosMedicos" Type="Self.RegistrosMedico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudadanos">
+              <PropertyRef Name="CiudadanoID" />
+            </Principal>
+            <Dependent Role="RegistrosMedicos">
+              <PropertyRef Name="Ciudadanoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistroPolicial_Comisarias">
+          <End Role="Comisarias" Type="Self.Comisaria" Multiplicity="1" />
+          <End Role="RegistrosPoliciales" Type="Self.RegistrosPoliciale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comisarias">
+              <PropertyRef Name="ComisariaID" />
+            </Principal>
+            <Dependent Role="RegistrosPoliciales">
+              <PropertyRef Name="ComisariaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrosMedicos_Doctores">
+          <End Role="Doctores" Type="Self.Doctore" Multiplicity="1" />
+          <End Role="RegistrosMedicos" Type="Self.RegistrosMedico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctores">
+              <PropertyRef Name="MedicoID" />
+            </Principal>
+            <Dependent Role="RegistrosMedicos">
+              <PropertyRef Name="MedicoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrosJudiciales_FuncionarioJudicial">
+          <End Role="FuncionariosJudiciales" Type="Self.FuncionariosJudiciale" Multiplicity="1" />
+          <End Role="RegistrosJudiciales" Type="Self.RegistrosJudiciale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FuncionariosJudiciales">
+              <PropertyRef Name="FuncJudicialId" />
+            </Principal>
+            <Dependent Role="RegistrosJudiciales">
+              <PropertyRef Name="FuncJudicialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrosMedicos_Hospitales">
+          <End Role="Hospitales" Type="Self.Hospitale" Multiplicity="1" />
+          <End Role="RegistrosMedicos" Type="Self.RegistrosMedico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospitales">
+              <PropertyRef Name="HospitalID" />
+            </Principal>
+            <Dependent Role="RegistrosMedicos">
+              <PropertyRef Name="HospitalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistrosJudiciales_Juzgados">
+          <End Role="Juzgados" Type="Self.Juzgado" Multiplicity="1" />
+          <End Role="RegistrosJudiciales" Type="Self.RegistrosJudiciale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Juzgados">
+              <PropertyRef Name="JuzgadoID" />
+            </Principal>
+            <Dependent Role="RegistrosJudiciales">
+              <PropertyRef Name="JuzgadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistroPolicial_Policias">
+          <End Role="Policias" Type="Self.Policia" Multiplicity="1" />
+          <End Role="RegistrosPoliciales" Type="Self.RegistrosPoliciale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Policias">
+              <PropertyRef Name="PoliciaID" />
+            </Principal>
+            <Dependent Role="RegistrosPoliciales">
+              <PropertyRef Name="PoliciaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="SNRegistroEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Acciones" EntityType="Self.Accione" />
+          <EntitySet Name="AccionesJudiciales" EntityType="Self.AccionesJudiciale" />
+          <EntitySet Name="AccionesPoliciales" EntityType="Self.AccionesPoliciale" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Ciudadades" EntityType="Self.Ciudadade" />
+          <EntitySet Name="Ciudadanos" EntityType="Self.Ciudadano" />
+          <EntitySet Name="Comisarias" EntityType="Self.Comisaria" />
+          <EntitySet Name="Departamentos" EntityType="Self.Departamento" />
+          <EntitySet Name="Doctores" EntityType="Self.Doctore" />
+          <EntitySet Name="FuncionariosJudiciales" EntityType="Self.FuncionariosJudiciale" />
+          <EntitySet Name="Hospitales" EntityType="Self.Hospitale" />
+          <EntitySet Name="Juzgados" EntityType="Self.Juzgado" />
+          <EntitySet Name="Policias" EntityType="Self.Policia" />
+          <EntitySet Name="Procesos" EntityType="Self.Proceso" />
+          <EntitySet Name="ProcesosJudiciales" EntityType="Self.ProcesosJudiciale" />
+          <EntitySet Name="ProcesosPoliciales" EntityType="Self.ProcesosPoliciale" />
+          <EntitySet Name="RegistrosJudiciales" EntityType="Self.RegistrosJudiciale" />
+          <EntitySet Name="RegistrosMedicos" EntityType="Self.RegistrosMedico" />
+          <EntitySet Name="RegistrosPoliciales" EntityType="Self.RegistrosPoliciale" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_Acciones_Procesos" Association="Self.FK_Acciones_Procesos">
+            <End Role="Procesos" EntitySet="Procesos" />
+            <End Role="Acciones" EntitySet="Acciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrosMedicos_Acciones" Association="Self.FK_RegistrosMedicos_Acciones">
+            <End Role="Acciones" EntitySet="Acciones" />
+            <End Role="RegistrosMedicos" EntitySet="RegistrosMedicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccionJudicial_ProcesosJudiciales" Association="Self.FK_AccionJudicial_ProcesosJudiciales">
+            <End Role="ProcesosJudiciales" EntitySet="ProcesosJudiciales" />
+            <End Role="AccionesJudiciales" EntitySet="AccionesJudiciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrosJudiciales_AccionJudicial" Association="Self.FK_RegistrosJudiciales_AccionJudicial">
+            <End Role="AccionesJudiciales" EntitySet="AccionesJudiciales" />
+            <End Role="RegistrosJudiciales" EntitySet="RegistrosJudiciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccionesPoliciales_ProcesosJudiciales" Association="Self.FK_AccionesPoliciales_ProcesosJudiciales">
+            <End Role="ProcesosPoliciales" EntitySet="ProcesosPoliciales" />
+            <End Role="AccionesPoliciales" EntitySet="AccionesPoliciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistroPolicial_AccionesPoliciales" Association="Self.FK_RegistroPolicial_AccionesPoliciales">
+            <End Role="AccionesPoliciales" EntitySet="AccionesPoliciales" />
+            <End Role="RegistrosPoliciales" EntitySet="RegistrosPoliciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comisarias_Ciudadades" Association="Self.FK_Comisarias_Ciudadades">
+            <End Role="Ciudadades" EntitySet="Ciudadades" />
+            <End Role="Comisarias" EntitySet="Comisarias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hospitales_Ciudadades" Association="Self.FK_Hospitales_Ciudadades">
+            <End Role="Ciudadades" EntitySet="Ciudadades" />
+            <End Role="Hospitales" EntitySet="Hospitales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistroPolicial_Ciudadanos" Association="Self.FK_RegistroPolicial_Ciudadanos">
+            <End Role="Ciudadanos" EntitySet="Ciudadanos" />
+            <End Role="RegistrosPoliciales" EntitySet="RegistrosPoliciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrosJudiciales_Ciudadanos" Association="Self.FK_RegistrosJudiciales_Ciudadanos">
+            <End Role="Ciudadanos" EntitySet="Ciudadanos" />
+            <End Role="RegistrosJudiciales" EntitySet="RegistrosJudiciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrosMedicos_Ciudadanos" Association="Self.FK_RegistrosMedicos_Ciudadanos">
+            <End Role="Ciudadanos" EntitySet="Ciudadanos" />
+            <End Role="RegistrosMedicos" EntitySet="RegistrosMedicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistroPolicial_Comisarias" Association="Self.FK_RegistroPolicial_Comisarias">
+            <End Role="Comisarias" EntitySet="Comisarias" />
+            <End Role="RegistrosPoliciales" EntitySet="RegistrosPoliciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrosMedicos_Doctores" Association="Self.FK_RegistrosMedicos_Doctores">
+            <End Role="Doctores" EntitySet="Doctores" />
+            <End Role="RegistrosMedicos" EntitySet="RegistrosMedicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrosJudiciales_FuncionarioJudicial" Association="Self.FK_RegistrosJudiciales_FuncionarioJudicial">
+            <End Role="FuncionariosJudiciales" EntitySet="FuncionariosJudiciales" />
+            <End Role="RegistrosJudiciales" EntitySet="RegistrosJudiciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrosMedicos_Hospitales" Association="Self.FK_RegistrosMedicos_Hospitales">
+            <End Role="Hospitales" EntitySet="Hospitales" />
+            <End Role="RegistrosMedicos" EntitySet="RegistrosMedicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistrosJudiciales_Juzgados" Association="Self.FK_RegistrosJudiciales_Juzgados">
+            <End Role="Juzgados" EntitySet="Juzgados" />
+            <End Role="RegistrosJudiciales" EntitySet="RegistrosJudiciales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistroPolicial_Policias" Association="Self.FK_RegistroPolicial_Policias">
+            <End Role="Policias" EntitySet="Policias" />
+            <End Role="RegistrosPoliciales" EntitySet="RegistrosPoliciales" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SNRegistroModelStoreContainer" CdmEntityContainer="SNRegistroEntities">
+          <EntitySetMapping Name="Acciones">
+            <EntityTypeMapping TypeName="SNRegistroModel.Accione">
+              <MappingFragment StoreEntitySet="Acciones">
+                <ScalarProperty Name="AccionID" ColumnName="AccionID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ProcesoID" ColumnName="ProcesoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccionesJudiciales">
+            <EntityTypeMapping TypeName="SNRegistroModel.AccionesJudiciale">
+              <MappingFragment StoreEntitySet="AccionesJudiciales">
+                <ScalarProperty Name="AccJudID" ColumnName="AccJudID" />
+                <ScalarProperty Name="NombreAJ" ColumnName="NombreAJ" />
+                <ScalarProperty Name="ProcesoJudID" ColumnName="ProcesoJudID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccionesPoliciales">
+            <EntityTypeMapping TypeName="SNRegistroModel.AccionesPoliciale">
+              <MappingFragment StoreEntitySet="AccionesPoliciales">
+                <ScalarProperty Name="AccPolID" ColumnName="AccPolID" />
+                <ScalarProperty Name="NombreAP" ColumnName="NombreAP" />
+                <ScalarProperty Name="ProcesoPolicialID" ColumnName="ProcesoPolicialID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="SNRegistroModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="SNRegistroModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="SNRegistroModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="SNRegistroModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ciudadades">
+            <EntityTypeMapping TypeName="SNRegistroModel.Ciudadade">
+              <MappingFragment StoreEntitySet="Ciudadades">
+                <ScalarProperty Name="CiudadID" ColumnName="CiudadID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="DepartamentoID" ColumnName="DepartamentoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ciudadanos">
+            <EntityTypeMapping TypeName="SNRegistroModel.Ciudadano">
+              <MappingFragment StoreEntitySet="Ciudadanos">
+                <ScalarProperty Name="CiudadanoID" ColumnName="CiudadanoID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comisarias">
+            <EntityTypeMapping TypeName="SNRegistroModel.Comisaria">
+              <MappingFragment StoreEntitySet="Comisarias">
+                <ScalarProperty Name="ComisariaID" ColumnName="ComisariaID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CiudadID" ColumnName="CiudadID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamentos">
+            <EntityTypeMapping TypeName="SNRegistroModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamentos">
+                <ScalarProperty Name="DepartamentoID" ColumnName="DepartamentoID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctores">
+            <EntityTypeMapping TypeName="SNRegistroModel.Doctore">
+              <MappingFragment StoreEntitySet="Doctores">
+                <ScalarProperty Name="MedicoID" ColumnName="MedicoID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="HospitalId" ColumnName="HospitalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FuncionariosJudiciales">
+            <EntityTypeMapping TypeName="SNRegistroModel.FuncionariosJudiciale">
+              <MappingFragment StoreEntitySet="FuncionariosJudiciales">
+                <ScalarProperty Name="FuncJudicialId" ColumnName="FuncJudicialId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="JuzgadoID" ColumnName="JuzgadoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hospitales">
+            <EntityTypeMapping TypeName="SNRegistroModel.Hospitale">
+              <MappingFragment StoreEntitySet="Hospitales">
+                <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CiudadID" ColumnName="CiudadID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Juzgados">
+            <EntityTypeMapping TypeName="SNRegistroModel.Juzgado">
+              <MappingFragment StoreEntitySet="Juzgados">
+                <ScalarProperty Name="JuzgadoID" ColumnName="JuzgadoID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CiudadID" ColumnName="CiudadID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Policias">
+            <EntityTypeMapping TypeName="SNRegistroModel.Policia">
+              <MappingFragment StoreEntitySet="Policias">
+                <ScalarProperty Name="PoliciaID" ColumnName="PoliciaID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="ComisariaID" ColumnName="ComisariaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Procesos">
+            <EntityTypeMapping TypeName="SNRegistroModel.Proceso">
+              <MappingFragment StoreEntitySet="Procesos">
+                <ScalarProperty Name="ProcesoID" ColumnName="ProcesoID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcesosJudiciales">
+            <EntityTypeMapping TypeName="SNRegistroModel.ProcesosJudiciale">
+              <MappingFragment StoreEntitySet="ProcesosJudiciales">
+                <ScalarProperty Name="ProcesoJudID" ColumnName="ProcesoJudID" />
+                <ScalarProperty Name="NombreProcJud" ColumnName="NombreProcJud" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcesosPoliciales">
+            <EntityTypeMapping TypeName="SNRegistroModel.ProcesosPoliciale">
+              <MappingFragment StoreEntitySet="ProcesosPoliciales">
+                <ScalarProperty Name="ProcesoPolicialID" ColumnName="ProcesoPolicialID" />
+                <ScalarProperty Name="NombrePP" ColumnName="NombrePP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistrosJudiciales">
+            <EntityTypeMapping TypeName="SNRegistroModel.RegistrosJudiciale">
+              <MappingFragment StoreEntitySet="RegistrosJudiciales">
+                <ScalarProperty Name="RegistroJudicialID" ColumnName="RegistroJudicialID" />
+                <ScalarProperty Name="CiudadanoID" ColumnName="CiudadanoID" />
+                <ScalarProperty Name="FuncJudicialId" ColumnName="FuncJudicialId" />
+                <ScalarProperty Name="JuzgadoID" ColumnName="JuzgadoID" />
+                <ScalarProperty Name="AccJudID" ColumnName="AccJudID" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistrosMedicos">
+            <EntityTypeMapping TypeName="SNRegistroModel.RegistrosMedico">
+              <MappingFragment StoreEntitySet="RegistrosMedicos">
+                <ScalarProperty Name="RegistroMedicoID" ColumnName="RegistroMedicoID" />
+                <ScalarProperty Name="Ciudadanoid" ColumnName="Ciudadanoid" />
+                <ScalarProperty Name="MedicoID" ColumnName="MedicoID" />
+                <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
+                <ScalarProperty Name="AccionID" ColumnName="AccionID" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Momento" ColumnName="Momento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistrosPoliciales">
+            <EntityTypeMapping TypeName="SNRegistroModel.RegistrosPoliciale">
+              <MappingFragment StoreEntitySet="RegistrosPoliciales">
+                <ScalarProperty Name="RegistroPolicialID" ColumnName="RegistroPolicialID" />
+                <ScalarProperty Name="CiudadanoID" ColumnName="CiudadanoID" />
+                <ScalarProperty Name="PoliciaID" ColumnName="PoliciaID" />
+                <ScalarProperty Name="ComisariaID" ColumnName="ComisariaID" />
+                <ScalarProperty Name="AccPolID" ColumnName="AccPolID" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SNRegistroModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="SNRegistroModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

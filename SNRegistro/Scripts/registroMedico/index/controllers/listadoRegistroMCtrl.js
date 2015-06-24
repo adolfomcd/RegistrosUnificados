@@ -1,27 +1,4 @@
-﻿//(function () {
-//    'use strict';
-
-//    angular
-//        .module('GestorMedicoApp')
-//        .controller('listadoRegistroMCtrl', listadoRegistroMCtrl);
-
-//    listadoRegistroMCtrl.$inject = ['$rootScope', 'GestorMedicoResourse'];
-
-//    function listadoRegistroMCtrl($rootScope, GestorMedicoResource) {
-//        /* jshint validthis:true */
-//        var vm = this;
-//        vm.RegistroMedicos = GestorMedicoResource.RegistroMedicos.query();
-//        vm.actualizar = function (RegistroMedicos) {
-//            $rootScope.$broadcast('actualizarRegistrosMedicos', RegistroMedicos);
-//        }
-//        //Escuchando eventos de otros controladores
-//        $rootScope.$on("actualizarListadoMedico", function (event, objetoRecibido) {
-//            vm.RegistroMedicos = GestorMedicoResource.RegistroMedicos.query();
-//        });
-
-//    }
-
-//})();
+﻿
 (function () {
     'use strict';
 
@@ -29,14 +6,39 @@
         .module('GestorMedicoApp')
         .controller('listadoRegistroMCtrl', listadoRegistroMCtrl);
 
-    listadoRegistroMCtrl.$inject = ['$rootScope', 'GestorMedicoResourse'];
+    listadoRegistroMCtrl.$inject = ['$rootScope', '$modal', 'GestorMedicoResourse'];
 
-    function listadoRegistroMCtrl($rootScope, GestorMedicoResource) {
+    function listadoRegistroMCtrl($rootScope, $modal, GestorMedicoResource) {
         /* jshint validthis:true */
         var vm = this;
         traerRegistroMedicos();
-        vm.actualizar = function (RegistroMedicos) {
-            $rootScope.$broadcast('actualizarRegistrosMedicos', RegistroMedicos);
+        vm.actualizar = function (RegistroMedico) {
+            $rootScope.$broadcast('actualizarRegistroMedico', RegistroMedico);
+        }
+        vm.eliminar = function (RegistroMedico) {
+            var modalInstance = $modal.open({
+                templateUrl: 'ModalEliminacion.html',
+                controller: function ($scope, $modalInstance) {
+                    $scope.RegistroMedico = RegistroMedico;
+                    $scope.objeto = {};
+                    $scope.objeto.id = RegistroMedico.RegistroMedicoID;
+                    $scope.objeto.mensaje = "Se eliminara la registro numero ";
+                    $scope.ok = function () {
+                        GestorMedicoResource.RegistroMedicos
+                            .delete({ id: RegistroMedico.RegistroMedicoID },
+                              function (respuesta) {
+                                  $scope.respuesta = respuesta;
+                                  traerRegistroMedicos();
+                              });
+
+                        //$rootScope.$broadcast('actualizarTodos', {});
+                    };
+                    $scope.cancel = function () {
+                        $modalInstance.dismiss('cancel');
+                    };
+                },
+                size: 'sm'
+            });
         }
         //Escuchando eventos de otros controladores
         $rootScope.$on("actualizarListadoMedico", function (event, objetoRecibido) {

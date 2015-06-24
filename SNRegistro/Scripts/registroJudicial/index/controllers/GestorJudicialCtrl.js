@@ -2,27 +2,27 @@
     'use strict';
 
     angular
-        .module('GestorMedicoApp')
-        .controller('GestorMedicoCtrl', GestorMedicoCtrl);
+        .module('GestorJudicialApp')
+        .controller('GestorJudicialCtrl', GestorJudicialCtrl);
 
-    GestorMedicoCtrl.$inject = ['$scope', '$rootScope', '$modal', 'GestorMedicoResourse'];
+    GestorJudicialCtrl.$inject = ['$scope', '$rootScope', '$modal', 'GestorJudicialResourse'];
 
-    function GestorMedicoCtrl($scope, $rootScope, $modal, GestorMedicoResourse) {
+    function GestorJudicialCtrl($scope, $rootScope, $modal, GestorJudicialResourse) {
         /* jshint validthis:true */
         var vm = this;
-        vm.Ciudadanos = GestorMedicoResourse.Ciudadanos.query();
-        vm.Doctores = GestorMedicoResourse.Doctores.query();
-        vm.Hospitales = GestorMedicoResourse.Hospitales.query();
-        vm.Procesos = GestorMedicoResourse.Procesos.query();
+        vm.Ciudadanos = GestorJudicialResourse.Ciudadanos.query();
+        vm.FuncionarioJudicial = GestorJudicialResourse.FuncionarioJudicial.query();
+        vm.Juzgados = GestorJudicialResourse.Juzgados.query();
+        vm.ProcesosJudiciales = GestorJudicialResourse.ProcesosJudiciales.query();
        
-        $scope.$watch('vm.GestorMedico.Proceso', function (newValue, oldValue) {
+        $scope.$watch('vm.GestorJudicial.ProcesoJudicial', function (newValue, oldValue) {
             if (newValue !== oldValue) {
-                if (vm.GestorMedico.Proceso == null) { return; }
-                GestorMedicoResourse.AccionesSegunProcesoID.query(
-                    { ProcesoID: vm.GestorMedico.Proceso.ProcesoID },
+                if (vm.GestorJudicial.ProcesoJudicial == null) { return; }
+                GestorJudicialResourse.AccionesJudicialesSegunProcesoJudID.query(
+                    { ProcesoJudID: vm.GestorJudicial.ProcesoJudicial.ProcesoJudID },
                     function (respuesta) {
-                        vm.Acciones = respuesta;
-                        refrescarCampoSelect("GestorMedico", vm.Acciones, "Accione", "AccionID");
+                        vm.AccionesJudiciales = respuesta;
+                        refrescarCampoSelect("GestorJudicial", vm.AccionesJudiciales, "AccionesJudiciale", "AccJudID");
                     });
             }
         });
@@ -41,14 +41,14 @@
         }
         //Eventos de usuario
         vm.guardar = function () {
-            GestorMedicoResourse.RegistroMedicos.save(vm.GestorMedico)
+            GestorJudicialResourse.RegistrosJudiciales.save(vm.GestorJudicial)
             .$promise.then(function (respuesta) {
                 //Exitoso
-                vm.GestorMedico = respuesta.ObjetoDto;
+                vm.GestorJudicial = respuesta.ObjetoDto;
                 vm.MensajeDelProceso = respuesta.MensajeDelProceso;
-                refrescarCampoSelect("GestorMedico", vm.Procesos, "Proceso", "ProcesoID");
-                refrescarCampoSelect("GestorMedico", vm.Acciones, "Accione", "AccionID");
-                $rootScope.$broadcast('actualizarListadoMedico', {});
+                refrescarCampoSelect("GestorJudicial", vm.ProcesosJudiciales, "ProcesosJudiciale", "ProcesoJudID");
+                refrescarCampoSelect("GestorJudicial", vm.AccionesJudicialesJudiciales, "AccionesJudicialesJudiciale", "AccJudID");
+                $rootScope.$broadcast('actualizarListadoJudicial', {});
             },
             function () {
                 //Error
@@ -63,7 +63,7 @@
             });
             modalInstance.result.then(function (selectedItem) {
             }, function () {
-                vm.Ciudadanos = GestorMedicoResourse.Ciudadanos.query();
+                vm.Ciudadanos = GestorJudicialResourse.Ciudadanos.query();
                 //$log.info('Modal dismissed at: ' + new Date());
             });
         }
