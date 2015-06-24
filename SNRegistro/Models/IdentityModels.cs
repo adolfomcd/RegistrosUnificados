@@ -21,7 +21,7 @@ namespace SNRegistro.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("SNRegistroModel", throwIfV1Schema: false)
+            : base("SNRegistroDb", throwIfV1Schema: false)
         {
         }
         static ApplicationDbContext() {
