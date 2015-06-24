@@ -34,7 +34,7 @@ namespace SNRegistro.Controllers.Api
         }
         [HttpPost]
         [Route("api/RegistrosJudiciales/FiltroPorRegistroJudicialDto")]
-        public HttpResponseMessage PostFiltroPorRegistroMedicoDto(RegistrosJudicialeDto rDto)
+        public HttpResponseMessage PostFiltroPorRegistrosJudicialeDto(RegistrosJudicialeDto rDto)
         {
             RegistrosJudicialesManagers rm = new RegistrosJudicialesManagers();
             MensajeDto mensaje = rm.ListadoRegistroJudicial(rDto);

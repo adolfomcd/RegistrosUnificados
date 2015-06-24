@@ -24,6 +24,7 @@
 
             function GestorJudicialResourse($resource, $http) {
                 var Ciudadanos = $resource("@Href("~/api/Ciudadanos")");
+                var FiltroPorRegistroJudicialDto = $resource("~/api/RegistrosJudiciales/FiltroPorRegistroJudicialDto")
                 var FuncionariosJudiciales = $resource("@Href("~/api/FuncionariosJudiciales")");
                 var Juzgados = $resource("@Href("~/api/Juzgados")");
                 var ProcesosJudiciales = $resource("@Href("~/api/ProcesosJudiciales")");
@@ -37,7 +38,8 @@
                     "ProcesosJudiciales": ProcesosJudiciales,
                     "AccionJudicial": AccionJudicial,
                     "AccionesJudicialesSegunProcesoJudID": AccionesJudicialesSegunProcesoJudID,
-                    "RegistrosJudiciales": RegistrosJudiciales
+                    "RegistrosJudiciales": RegistrosJudiciales,
+                    "FiltroPorRegistroJudicialDto": FiltroPorRegistroJudicialDto
                 }
             }
         })();

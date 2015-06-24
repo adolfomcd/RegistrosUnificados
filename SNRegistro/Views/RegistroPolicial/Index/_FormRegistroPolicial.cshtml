@@ -4,7 +4,7 @@
         <label for="Ciudadano" class="col-md-4 control-label">Ciudadano</label>
         <div class="col-md-8">
             <div class="input-group">
-                <input type="text" name="Ciudadano" ng-required="true" ng-model="vm.GestorMedico.Ciudadano" typeahead="Ciudadano as Ciudadano.Nombre + ' ' + Ciudadano.Apellido for Ciudadano in vm.Ciudadanos | filter:$viewValue | limitTo:8" class="form-control">
+                <input type="text" name="Ciudadano" ng-required="true" ng-model="vm.GestorJudicial.Ciudadano" typeahead="Ciudadano as Ciudadano.Nombre + ' ' + Ciudadano.Apellido for Ciudadano in vm.Ciudadanos | filter:$viewValue | limitTo:8" class="form-control">
                 <span class="input-group-btn">
                     <button class="btn btn-default" ng-click="vm.crearCiudadano()" type="button">Crear</button>
                 </span>
@@ -12,10 +12,10 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="doctore" class="col-md-4 control-label">Doctor</label>
+        <label for="policia" class="col-md-4 control-label">Policia</label>
         <div class="col-md-8">
             <div class="input-group">
-                <input type="text" name="doctore" ng-required="true" ng-model="vm.GestorMedico.Doctore" typeahead="doctore as doctore.Nombre + ' ' + doctore.Apellido for doctore in vm.Doctores | filter:$viewValue | limitTo:8" class="form-control">
+                <input type="text" name="policia" ng-required="true" ng-model="vm.GestorJudicial.Policia" typeahead="policia as policia.Nombre + ' ' + policia.Apellido for policia in vm.Policias | filter:$viewValue | limitTo:8" class="form-control">
                 <span class="input-group-btn">
                     <button class="btn btn-default" ng-click="vm.crearDoctor()" type="button">Crear</button>
                 </span>
@@ -23,16 +23,17 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="hospitale" class="col-md-4 control-label">Hospital</label>
+        <label for="comisaria" class="col-md-4 control-label">Comisaria</label>
         <div class="col-md-8">
             <div class="input-group">
-                <input type="text" name="hospitale" ng-required="true" ng-model="vm.GestorMedico.Hospitale" typeahead="Hospitale as Hospitale.Nombre + ' ' + Hospitale.CiudadID for Hospitale in vm.Hospitales | filter:$viewValue | limitTo:8" class="form-control">
+                <input type="text" name="comisaria" ng-required="true" ng-model="vm.GestorJudicial.Comisaria" typeahead="Comisaria as Comisaria.Nombre + ' ' + Comisaria.CiudadID for Comisaria in vm.Comisarias | filter:$viewValue | limitTo:8" class="form-control">
                 <span class="input-group-btn">
                     <button class="btn btn-default" ng-click="vm.crearDoctor()" type="button">Crear</button>
                 </span>
             </div>
         </div>
     </div>
+
     <div class="form-group">
         <label for="proceso" class="col-md-4 control-label">Proceso</label>
         <div class="col-md-8">
