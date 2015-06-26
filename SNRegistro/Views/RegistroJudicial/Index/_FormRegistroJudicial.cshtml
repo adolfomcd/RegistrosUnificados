@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="FuncionariosJudiciale" class="col-md-4 control-label">FuncionariosJudiciales</label>
+        <label for="FuncionariosJudiciale" class="col-md-4 control-label">Func. Judiciales</label>
         <div class="col-md-8">
             <div class="input-group">
                 <input type="text" name="FuncionariosJudiciale" ng-required="true" ng-model="vm.GestorJudicial.FuncionariosJudiciale" typeahead="FuncionariosJudiciale as FuncionariosJudiciale.Nombre + ' ' + FuncionariosJudiciale.Apellido for FuncionariosJudiciale in vm.FuncionariosJudiciales | filter:$viewValue | limitTo:8" class="form-control">
@@ -51,7 +51,7 @@
         <div class="col-md-8">
             <select name="AccionesJudiciale" required
                     ng-model="vm.GestorJudicial.AccionesJudiciale"
-                    ng-options="r.Nombre for r in vm.AccionesJudiciale" class="form-control"
+                    ng-options="r.NombreAJ for r in vm.AccionesJudiciales" class="form-control"
                     ng-required="true">
 
                 <option value="" ng-hide="vm.GestorJudicial.AccionesJudiciale">Seleccione Acción</option>
@@ -89,8 +89,8 @@
         {{vm.GestorJudicial | json}}
         </pre>
     @*<pre>
-    {{vm | json }}
-</pre>*@
+            {{vm | json }}
+        </pre>*@
 </form>
 
 

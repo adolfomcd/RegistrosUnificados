@@ -49,12 +49,12 @@
                     <tr ng-repeat="o in vm.RegistrosPoliciales">
                         <td><button title="Actualizar" class="btn btn-warning btn-sm" ng-click="vm.actualizar(o)"> <i class="glyphicon glyphicon-edit" /></button></td>
                         <td><button title="Eliminar" class="btn btn-danger btn-sm" ng-click="vm.eliminar(o)"><i class=" glyphicon glyphicon-remove" /></button></td>
-                        <td>{{o.RegistroMedicoID}}</td>
-                        <td>{{o.Ciudadano.Nombre}}</td>
+                        <td>{{o.RegistroPolicialID}}</td>
+                        <td>{{o.Ciudadano.Nombre + " " + o.Ciudadano.Apellido }}</td>
                         <td>{{o.Policia.Nombre + " " + o.Policia.Apellido }}</td>
                         <td>{{o.Comisaria.Nombre}}</td>
                         <td>{{o.AccionesPoliciale.ProcesosPoliciale.NombrePP}}</td>
-                        <td>{{o.AccionesPoliciale.Nombre}}</td>
+                        <td>{{o.AccionesPoliciale.NombreAP}}</td>
                         <td>{{o.Comentario}}</td>
                     </tr>
                 </tbody>

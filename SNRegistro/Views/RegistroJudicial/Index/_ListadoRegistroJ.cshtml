@@ -17,11 +17,11 @@
             </ul>
             <div style="margin-top:25px;" ng-show="vm.menu.listado.mostrar">
                 <div class="alert alert-danger">
-                    LISTADO
+                    Listado Judicial
                 </div>
             </div>
             <div style="margin-top:25px;" ng-show="vm.menu.busqueda.mostrar">
-                @*@Html.Partial("Index/_FormBusqueda")*@
+                @Html.Partial("Index/_FormBusqueda")
                 <div class="alert alert-danger">
                     BUSQUEDA
                 </div>
@@ -49,11 +49,11 @@
                         <td><button title="Actualizar" class="btn btn-warning btn-sm" ng-click="vm.actualizar(o)"> <i class="glyphicon glyphicon-edit" /></button></td>
                         <td><button title="Eliminar" class="btn btn-danger btn-sm" ng-click="vm.eliminar(o)"><i class=" glyphicon glyphicon-remove" /></button></td>
                         <td>{{o.RegistroJudicialID}}</td>
-                        <td>{{o.Ciudadano.Nombre}}</td>
+                        <td>{{o.Ciudadano.Nombre + " " + o.Ciudadano.Apellido }}</td>
                         <td>{{o.FuncionariosJudiciale.Nombre + " " + o.FuncionariosJudiciale.Apellido }}</td>
                         <td>{{o.Juzgado.Nombre}}</td>
-                        <td>{{o.AccionesJudiciale.ProcesosJudiciale.NombreAJ}}</td>
-                        <td>{{o.Accione.Nombre}}</td>
+                        <td>{{o.AccionesJudiciale.ProcesosJudiciale.NombreProcJud}}</td>
+                        <td>{{o.AccionesJudiciale.NombreAJ}}</td>
                         <td>{{o.Comentario}}</td>
                     </tr>
                 </tbody>

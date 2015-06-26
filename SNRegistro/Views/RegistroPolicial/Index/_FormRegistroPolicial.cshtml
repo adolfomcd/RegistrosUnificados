@@ -15,7 +15,7 @@
         <label for="policia" class="col-md-4 control-label">Policia</label>
         <div class="col-md-8">
             <div class="input-group">
-                <input type="text" name="policia" ng-required="true" ng-model="vm.GestorPolicial.Policia" typeahead="policia as policia.Nombre + ' ' + policia.Apellido for policia in vm.Policias | filter:$viewValue | limitTo:8" class="form-control">
+                <input type="text" name="policia" ng-required="true" ng-model="vm.GestorPolicial.Policia" typeahead="Policia as Policia.Nombre + ' ' + Policia.Apellido for Policia in vm.Policias | filter:$viewValue | limitTo:8" class="form-control">
                 <span class="input-group-btn">
                     <button class="btn btn-default" ng-click="vm.crearDoctor()" type="button">Crear</button>
                 </span>
@@ -39,7 +39,7 @@
         <div class="col-md-8">
             <select name="ProcesosPoliciale" required
                     ng-model="vm.GestorPolicial.ProcesosPoliciale"
-                    ng-options="r.Nombre for r in vm.ProcesosPoliciales" class="form-control"
+                    ng-options="r.NombrePP for r in vm.ProcesosPoliciales" class="form-control"
                     ng-required="true">
                 <!--<option value="">-- Seleccione el concepto --</option>-->
                 <option value="" ng-hide="vm.GestorPolicial.ProcesosPoliciale">Seleccione Proceso</option>
@@ -52,7 +52,7 @@
         <div class="col-md-8">
             <select name="AccionesPoliciale" required
                     ng-model="vm.GestorPolicial.AccionesPoliciale"
-                    ng-options="r.Nombre for r in vm.AccionesPoliciales" class="form-control"
+                    ng-options="r.NombreAP for r in vm.AccionesPoliciales" class="form-control"
                     ng-required="true">
 
                 <option value="" ng-hide="vm.GestorPolicial.AccionesPoliciale">Seleccione Acción</option>

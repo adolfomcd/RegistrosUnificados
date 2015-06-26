@@ -2,7 +2,7 @@
     <div class="form-group">
         <label for="Ciudadano" class="col-md-4 control-label">Por ciudadano</label>
         <div class="col-md-8">
-            <input type="text" name="Ciudadano" ng-required="true" ng-model="vm.GestorMedico.Ciudadano" typeahead="Ciudadano as Ciudadano.Nombre + ' ' + Ciudadano.Apellido for Ciudadano in vm.Ciudadanos | filter:$viewValue | limitTo:8" class="form-control">
+            <input type="text" name="Ciudadano" ng-required="true" ng-model="vm.GestorJudicial.Ciudadano" typeahead="Ciudadano as Ciudadano.Nombre + ' ' + Ciudadano.Apellido for Ciudadano in vm.Ciudadanos | filter:$viewValue | limitTo:8" class="form-control">
         </div>
     </div>
 
@@ -25,5 +25,5 @@
             {{vm.mensaje}}
         </div>
     </div>
-    @*<pre>{{vm.GestorMedico | json}}</pre>*@
+    <pre>{{vm.GestorJudicial | json}}</pre>
 </form>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SNRegistros.Aplicacion.Dto;
+using SNRegistros.Dominio.Managers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,9 +12,11 @@ namespace SNRegistro.Controllers.Api
     public class PoliciasController : ApiController
     {
         // GET: api/Policias
-        public IEnumerable<string> Get()
+        public HttpResponseMessage Get()
         {
-            return new string[] { "value1", "value2" };
+            PoliciasManagers dm = new PoliciasManagers();
+            List<PoliciaDto> listado = dm.Listado();
+            return Request.CreateResponse<List<PoliciaDto>>(HttpStatusCode.OK, listado);
         }
 
         // GET: api/Policias/5

@@ -19,8 +19,7 @@ namespace SNRegistros.Dominio.Managers
                     {
                         AccJudID = s.AccJudID,
                         NombreAJ = s.NombreAJ,
-                        //CiudadID = s.CiudadID
-                    }).ToList();
+                        }).ToList();
                 return listado;
             }
         }

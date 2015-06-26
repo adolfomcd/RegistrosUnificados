@@ -37,8 +37,7 @@ namespace SNRegistros.Dominio.Managers
                         ProcesosPoliciale = new ProcesosPolicialeDto()
                         {
                             ProcesoPolicialID = s.ProcesoPolicialID,
-                            
-                           NombrePP= s.ProcesosPoliciale.NombrePP
+                            NombrePP= s.ProcesosPoliciale.NombrePP
                         }
                     }).ToList();
                 return listado;

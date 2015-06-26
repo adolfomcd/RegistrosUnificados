@@ -11,15 +11,15 @@
         /* jshint validthis:true */
         var vm = this;
         vm.Ciudadanos = GestorJudicialResourse.Ciudadanos.query();
-        vm.FuncionarioJudicial = GestorJudicialResourse.FuncionarioJudicial.query();
+        vm.FuncionariosJudiciales = GestorJudicialResourse.FuncionariosJudiciales.query();
         vm.Juzgados = GestorJudicialResourse.Juzgados.query();
         vm.ProcesosJudiciales = GestorJudicialResourse.ProcesosJudiciales.query();
-       
-        $scope.$watch('vm.GestorJudicial.ProcesoJudicial', function (newValue, oldValue) {
+
+        $scope.$watch('vm.GestorJudicial.ProcesosJudiciale', function (newValue, oldValue) {
             if (newValue !== oldValue) {
-                if (vm.GestorJudicial.ProcesoJudicial == null) { return; }
+                if (vm.GestorJudicial.ProcesosJudiciale == null) { return; }
                 GestorJudicialResourse.AccionesJudicialesSegunProcesoJudID.query(
-                    { ProcesoJudID: vm.GestorJudicial.ProcesoJudicial.ProcesoJudID },
+                    { ProcesoJudID: vm.GestorJudicial.ProcesosJudiciale.ProcesoJudID },
                     function (respuesta) {
                         vm.AccionesJudiciales = respuesta;
                         refrescarCampoSelect("GestorJudicial", vm.AccionesJudiciales, "AccionesJudiciale", "AccJudID");
@@ -40,6 +40,9 @@
 
         }
         //Eventos de usuario
+        vm.nuevoParaCargar = function () {
+            vm.GestorJudicial = {};
+        }
         vm.guardar = function () {
             GestorJudicialResourse.RegistrosJudiciales.save(vm.GestorJudicial)
             .$promise.then(function (respuesta) {
@@ -47,7 +50,7 @@
                 vm.GestorJudicial = respuesta.ObjetoDto;
                 vm.MensajeDelProceso = respuesta.MensajeDelProceso;
                 refrescarCampoSelect("GestorJudicial", vm.ProcesosJudiciales, "ProcesosJudiciale", "ProcesoJudID");
-                refrescarCampoSelect("GestorJudicial", vm.AccionesJudicialesJudiciales, "AccionesJudicialesJudiciale", "AccJudID");
+                refrescarCampoSelect("GestorJudicial", vm.AccionesJudiciales, "AccionesJudiciale", "AccJudID");
                 $rootScope.$broadcast('actualizarListadoJudicial', {});
             },
             function () {
@@ -67,5 +70,12 @@
                 //$log.info('Modal dismissed at: ' + new Date());
             });
         }
+        //Captura de broadcast
+        $rootScope.$on("actualizarRegistrosJudiciale", function (event, objetoRecibido) {
+            vm.GestorJudicial = objetoRecibido;
+            vm.GestorJudicial.ProcesosJudiciale = vm.GestorJudicial.AccionesJudiciale.ProcesosJudiciale;
+            refrescarCampoSelect("GestorJudicial", vm.ProcesosJudiciales, "ProcesosJudiciale", "ProcesoJudID");
+            //refrescarCampoSelect("GestorJudicial", vm.AccionesJudiciales, "AccionesJudiciale", "AccJudID");
+        });
     }
 })();

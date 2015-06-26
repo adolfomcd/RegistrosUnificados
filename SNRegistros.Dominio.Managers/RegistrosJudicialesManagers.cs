@@ -28,7 +28,8 @@ namespace SNRegistros.Dominio.Managers
                         Ciudadano = new CiudadanoDto()
                         {
                             CiudadanoID = s.CiudadanoID,
-                            Nombre = s.Ciudadano.Nombre
+                            Nombre = s.Ciudadano.Nombre,
+                            Apellido=s.Ciudadano.Apellido
                         },
                         Juzgado = new JuzgadoDto()
                         {
@@ -149,7 +150,7 @@ namespace SNRegistros.Dominio.Managers
             }
         }
 
-        public MensajeDto ListadoRegistroJudicial(RegistrosJudicialeDto rDto)
+        public MensajeDto ListadoRegistroJudicial(RegistrosJudicialeDto jDto)
         {
             using (var context = new SNRegistroEntities())
             {
@@ -186,10 +187,10 @@ namespace SNRegistros.Dominio.Managers
                              Comentario = s.Comentario
                          }).AsQueryable();
 
-                if (rDto.Ciudadano != null)
+                if (jDto.Ciudadano != null)
                 {
                     listado = listado
-                        .Where(s => s.Ciudadano.CiudadanoID == rDto.Ciudadano.CiudadanoID);
+                        .Where(s => s.Ciudadano.CiudadanoID == jDto.Ciudadano.CiudadanoID);
                 }
 
                 return new MensajeDto()

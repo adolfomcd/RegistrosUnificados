@@ -15,14 +15,14 @@
         vm.Comisarias = GestorPolicialResourse.Comisarias.query();
         vm.ProcesosPoliciales = GestorPolicialResourse.ProcesosPoliciales.query();
        
-        $scope.$watch('vm.GestorPolicial.ProcesosPoliciales', function (newValue, oldValue) {
+        $scope.$watch('vm.GestorPolicial.ProcesosPoliciale', function (newValue, oldValue) {
             if (newValue !== oldValue) {
-                if (vm.GestorPolicial.ProcesosPoliciales == null) { return; }
+                if (vm.GestorPolicial.ProcesosPoliciale == null) { return; }
                 GestorPolicialResourse.AccionesPolicialesSegunProcesoPolicialID.query(
-                    { ProcesoPolicialID: vm.GestorPolicial.ProcesosPoliciales.ProcesoPolicialID },
+                    { ProcesoPolicialID: vm.GestorPolicial.ProcesosPoliciale.ProcesoPolicialID },
                     function (respuesta) {
                         vm.AccionesPoliciales = respuesta;
-                        refrescarCampoSelect("GestorPolicial", vm.AccionesPoliciales, "AccionesPoliciales", "AccPolID");
+                        refrescarCampoSelect("GestorPolicial", vm.AccionesPoliciales, "AccionesPoliciale", "AccPolID");
                     });
             }
         });
@@ -40,14 +40,17 @@
 
         }
         //Eventos de usuario
+        vm.nuevoParaCargar = function () {
+            vm.GestorPolicial = {};
+        }
         vm.guardar = function () {
             GestorPolicialResourse.GestorPolicial.save(vm.GestorPolicial)
             .$promise.then(function (respuesta) {
                 //Exitoso
                 vm.GestorPolicial = respuesta.ObjetoDto;
                 vm.MensajeDelProceso = respuesta.MensajeDelProceso;
-                refrescarCampoSelect("GestorPolicial", vm.ProcesosPoliciales, "ProcesosPoliciales", "ProcesoPolicialID");
-                refrescarCampoSelect("GestorPolicial", vm.Acciones, "AccionesPoliciales", "AccPolID");
+                refrescarCampoSelect("GestorPolicial", vm.ProcesosPoliciales, "ProcesosPoliciale", "ProcesoPolicialID");
+                refrescarCampoSelect("GestorPolicial", vm.AccionesPoliciales, "AccionesPoliciale", "AccPolID");
                 $rootScope.$broadcast('actualizarListadoPolicial', {});
             },
             function () {
@@ -67,5 +70,12 @@
                 //$log.info('Modal dismissed at: ' + new Date());
             });
         }
+        //Captura de broadcast
+        $rootScope.$on("actualizarRegistroPolicial", function (event, objetoRecibido) {
+            vm.GestorPolicial = objetoRecibido;
+            vm.GestorPolicial.ProcesosPoliciale = vm.GestorPolicial.AccionesPoliciale.ProcesosPoliciale;
+            refrescarCampoSelect("GestorPolicial", vm.ProcesosPoliciales, "ProcesosPoliciale", "ProcesoPolicialID");
+            //refrescarCampoSelect("GestorMedico", vm.Acciones, "Accione", "AccionID");
+        });
     }
 })();

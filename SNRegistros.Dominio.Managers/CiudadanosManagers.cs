@@ -44,7 +44,7 @@ namespace SNRegistros.Dominio.Managers
                 return new MensajeDto()
                 {
                     Error = false,
-                    MensajeDelProceso = "Se cargo el Doctor : " + cDto.CiudadanoID,
+                    MensajeDelProceso = "Se cargo el Ciudadano : " + cDto.CiudadanoID,
                     ObjetoDto = cDto
                 };
             }

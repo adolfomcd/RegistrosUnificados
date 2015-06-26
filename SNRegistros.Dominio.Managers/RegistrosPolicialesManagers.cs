@@ -28,7 +28,8 @@ namespace SNRegistros.Dominio.Managers
                         Ciudadano = new CiudadanoDto()
                         {
                             CiudadanoID = s.CiudadanoID,
-                            Nombre = s.Ciudadano.Nombre
+                            Nombre = s.Ciudadano.Nombre,
+                            Apellido=s.Ciudadano.Apellido
                         },
                         Comisaria = new ComisariaDto()
                         {
@@ -102,7 +103,7 @@ namespace SNRegistros.Dominio.Managers
                 return new MensajeDto()
                 {
                     Error = false,
-                    MensajeDelProceso = "Se Edito el movimiento : " + mDto.RegistroPolicialID,
+                    MensajeDelProceso = "Se Edito el registro : " + mDto.RegistroPolicialID,
                     ObjetoDto = mDto
                 };
 
@@ -151,7 +152,8 @@ namespace SNRegistros.Dominio.Managers
                             Ciudadano = new CiudadanoDto()
                             {
                                 CiudadanoID = s.CiudadanoID,
-                                Nombre = s.Ciudadano.Nombre
+                                Nombre = s.Ciudadano.Nombre,
+                                Apellido=s.Ciudadano.Apellido
                             },
                             Comisaria = new ComisariaDto()
                             {
