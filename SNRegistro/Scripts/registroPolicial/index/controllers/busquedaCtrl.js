@@ -10,14 +10,14 @@
     function busquedaCtrl($rootScope, GestorPolicialResourse) {
         /* jshint validthis:true */
         var vm = this;
-        vm.GestorMedico = {};
+        vm.GestorPolicial = {};
         vm.Ciudadanos = GestorPolicialResourse.Ciudadanos.query();
 
         vm.buscar = function () {
-            GestorPolicialResourse.FiltroPorRegistrosPolicialeDto.save(vm.GestorMedico)
+            GestorPolicialResourse.FiltroPorRegistrosPolicialeDto.save(vm.GestorPolicial)
                 .$promise.then(function (respuesta) {
                     //Exitoso
-                    $rootScope.$broadcast('actualizarListadoMedicoSegunFiltro', respuesta.ObjetoDto);
+                    $rootScope.$broadcast('actualizarListadoPolicialSegunFiltro', respuesta.ObjetoDto);
                 },
             function () {
                 //Error

@@ -82,6 +82,9 @@
     <Compile Include="Comisaria.cs">
       <DependentUpon>SNRegistroDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>SNRegistroDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Departamento.cs">
       <DependentUpon>SNRegistroDB.tt</DependentUpon>
     </Compile>

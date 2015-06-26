@@ -45,7 +45,7 @@
             vm.RegistrosPoliciales = GestorPolicialResourse.RegistrosPoliciales.query();
             vm.listadoFn();
         });
-        $rootScope.$on("actualizarListadoMedicoSegunFiltro", function (event, objetoRecibido) {
+        $rootScope.$on("actualizarListadoPolicialSegunFiltro", function (event, objetoRecibido) {
             vm.RegistrosPoliciales = objetoRecibido;
         });
 

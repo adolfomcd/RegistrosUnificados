@@ -48,5 +48,6 @@ namespace SNRegistros.Dominio.DB
         public virtual DbSet<RegistrosMedico> RegistrosMedicos { get; set; }
         public virtual DbSet<RegistrosPoliciale> RegistrosPoliciales { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
     }
 }

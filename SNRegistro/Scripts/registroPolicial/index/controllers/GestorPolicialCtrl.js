@@ -14,7 +14,7 @@
         vm.Policias = GestorPolicialResourse.Policias.query();
         vm.Comisarias = GestorPolicialResourse.Comisarias.query();
         vm.ProcesosPoliciales = GestorPolicialResourse.ProcesosPoliciales.query();
-       
+
         $scope.$watch('vm.GestorPolicial.ProcesosPoliciale', function (newValue, oldValue) {
             if (newValue !== oldValue) {
                 if (vm.GestorPolicial.ProcesosPoliciale == null) { return; }
@@ -44,7 +44,7 @@
             vm.GestorPolicial = {};
         }
         vm.guardar = function () {
-            GestorPolicialResourse.GestorPolicial.save(vm.GestorPolicial)
+            GestorPolicialResourse.RegistrosPoliciales.save(vm.GestorPolicial)
             .$promise.then(function (respuesta) {
                 //Exitoso
                 vm.GestorPolicial = respuesta.ObjetoDto;
@@ -71,11 +71,11 @@
             });
         }
         //Captura de broadcast
-        $rootScope.$on("actualizarRegistroPolicial", function (event, objetoRecibido) {
+        $rootScope.$on("actualizarRegistrosPoliciale", function (event, objetoRecibido) {
             vm.GestorPolicial = objetoRecibido;
             vm.GestorPolicial.ProcesosPoliciale = vm.GestorPolicial.AccionesPoliciale.ProcesosPoliciale;
             refrescarCampoSelect("GestorPolicial", vm.ProcesosPoliciales, "ProcesosPoliciale", "ProcesoPolicialID");
-            //refrescarCampoSelect("GestorMedico", vm.Acciones, "Accione", "AccionID");
+            //refrescarCampoSelect("GestorPolicial", vm.AccionesPoliciales, "Accione", "AccPolID");
         });
     }
 })();

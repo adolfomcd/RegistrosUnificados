@@ -1,5 +1,4 @@
-﻿
-<div class="row">
+﻿<div class="row">
     <div class="col-md-12">
         <h3>Listado Registro Policial</h3>
     </div>
@@ -18,14 +17,11 @@
             </ul>
             <div style="margin-top:25px;" ng-show="vm.menu.listado.mostrar">
                 <div class="alert alert-danger">
-                    LISTADO
+                    Listado Policial
                 </div>
             </div>
             <div style="margin-top:25px;" ng-show="vm.menu.busqueda.mostrar">
-                @*@Html.Partial("Index/_FormBusqueda")*@
-                <div class="alert alert-danger">
-                    BUSQUEDA
-                </div>
+                @Html.Partial("Index/_FormBusqueda")
             </div>
         </div>
 
@@ -61,3 +57,19 @@
             </table>
         </div>
     </div>
+    </div>
+@*////////////////////////////////////////////////////////////////////
+    //////////////////////TEMPLETE DE LOS MODALES////////////////////////*@
+<script type="text/ng-template" id="ModalEliminacion.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{objeto.mensaje}} {{objeto.id}}</h3>
+        <p class="text-muted">Esta seguro?</p>
+    </div>
+    <div class="modal-body">
+        {{respuesta.MensajeDelProceso}}
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-link" ng-click="cancel()" id="btn_cancelar">Salir</button>
+        <button class="btn btn-primary" ng-click="ok()" id="btn_save">Eliminar</button>
+    </div>
+</script>

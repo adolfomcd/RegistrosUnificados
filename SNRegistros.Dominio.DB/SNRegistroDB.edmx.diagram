@@ -48,6 +48,7 @@
         <AssociationConnector Association="SNRegistroModel.FK_RegistrosJudiciales_Juzgados" ManuallyRouted="false" />
         <AssociationConnector Association="SNRegistroModel.FK_RegistroPolicial_Policias" ManuallyRouted="false" />
         <AssociationConnector Association="SNRegistroModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SNRegistroModel.C__MigrationHistory" Width="1.5" PointX="6.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

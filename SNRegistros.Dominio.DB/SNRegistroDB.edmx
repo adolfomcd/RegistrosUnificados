@@ -4,7 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SNRegistroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SNRegistroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
         <EntityType Name="Acciones">
           <Key>
             <PropertyRef Name="AccionID" />
@@ -335,18 +345,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RegistroPolicial_AccionesPoliciales">
-          <End Role="AccionesPoliciales" Type="Self.AccionesPoliciales" Multiplicity="1" />
-          <End Role="RegistrosPoliciales" Type="Self.RegistrosPoliciales" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AccionesPoliciales">
-              <PropertyRef Name="AccPolID" />
-            </Principal>
-            <Dependent Role="RegistrosPoliciales">
-              <PropertyRef Name="AccPolID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_RegistroPolicial_Ciudadanos">
           <End Role="Ciudadanos" Type="Self.Ciudadanos" Multiplicity="1" />
           <End Role="RegistrosPoliciales" Type="Self.RegistrosPoliciales" Multiplicity="*" />
@@ -479,7 +477,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RegistrosPoliciales_AccionesPoliciales">
+          <End Role="AccionesPoliciales" Type="Self.AccionesPoliciales" Multiplicity="1" />
+          <End Role="RegistrosPoliciales" Type="Self.RegistrosPoliciales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccionesPoliciales">
+              <PropertyRef Name="AccPolID" />
+            </Principal>
+            <Dependent Role="RegistrosPoliciales">
+              <PropertyRef Name="AccPolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="SNRegistroModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Acciones" EntityType="Self.Acciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccionesJudiciales" EntityType="Self.AccionesJudiciales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccionesPoliciales" EntityType="Self.AccionesPoliciales" Schema="dbo" store:Type="Tables" />
@@ -540,10 +551,6 @@
             <End Role="Ciudadades" EntitySet="Ciudadades" />
             <End Role="Hospitales" EntitySet="Hospitales" />
           </AssociationSet>
-          <AssociationSet Name="FK_RegistroPolicial_AccionesPoliciales" Association="Self.FK_RegistroPolicial_AccionesPoliciales">
-            <End Role="AccionesPoliciales" EntitySet="AccionesPoliciales" />
-            <End Role="RegistrosPoliciales" EntitySet="RegistrosPoliciales" />
-          </AssociationSet>
           <AssociationSet Name="FK_RegistroPolicial_Ciudadanos" Association="Self.FK_RegistroPolicial_Ciudadanos">
             <End Role="Ciudadanos" EntitySet="Ciudadanos" />
             <End Role="RegistrosPoliciales" EntitySet="RegistrosPoliciales" />
@@ -588,9 +595,12 @@
             <End Role="Hospitales" EntitySet="Hospitales" />
             <End Role="RegistrosMedicos" EntitySet="RegistrosMedicos" />
           </AssociationSet>
+          <AssociationSet Name="FK_RegistrosPoliciales_AccionesPoliciales" Association="Self.FK_RegistrosPoliciales_AccionesPoliciales">
+            <End Role="AccionesPoliciales" EntitySet="AccionesPoliciales" />
+            <End Role="RegistrosPoliciales" EntitySet="RegistrosPoliciales" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SNRegistroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1180,7 +1190,18 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="C__MigrationHistory" EntityType="SNRegistroModel.C__MigrationHistory" />
         </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1422,6 +1443,16 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="SNRegistroModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

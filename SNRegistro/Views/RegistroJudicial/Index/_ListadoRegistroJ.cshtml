@@ -60,3 +60,16 @@
             </table>
         </div>
     </div>
+<script type="text/ng-template" id="ModalEliminacion.html">
+        <div class="modal-header">
+            <h3 class="modal-title">{{objeto.mensaje}} {{objeto.id}}</h3>
+            <p class="text-muted">Esta seguro?</p>
+        </div>
+        <div class="modal-body">
+            {{respuesta.MensajeDelProceso}}
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-link" ng-click="cancel()" id="btn_cancelar">Salir</button>
+            <button class="btn btn-primary" ng-click="ok()" id="btn_save">Eliminar</button>
+        </div>
+    </script>

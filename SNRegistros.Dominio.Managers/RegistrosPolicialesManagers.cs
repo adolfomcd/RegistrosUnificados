@@ -65,7 +65,7 @@ namespace SNRegistros.Dominio.Managers
                 RegistroPolicialDb.CiudadanoID = mDto.Ciudadano.CiudadanoID;
                 RegistroPolicialDb.PoliciaID = mDto.Policia.PoliciaID;
                 RegistroPolicialDb.ComisariaID = mDto.Comisaria.ComisariaID;
-                RegistroPolicialDb.ComisariaID = mDto.AccionesPoliciale.AccPolID;
+                RegistroPolicialDb.AccPolID = mDto.AccionesPoliciale.AccPolID;
                 RegistroPolicialDb.Comentario = mDto.Comentario;
 
                 context.RegistrosPoliciales.Add(RegistroPolicialDb);
